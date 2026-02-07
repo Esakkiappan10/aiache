@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | AIACHE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { blue: '#1e3a8a', dark: '#0f172a', gold: '#d97706' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 font-sans antialiased h-screen flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center">
+    
+    <div class="absolute inset-0 bg-brand-blue/90 mix-blend-multiply"></div>
+
+    <div class="relative z-10 w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all hover:scale-[1.01]">
+        <div class="bg-brand-blue p-8 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-brand-gold/10"></div>
+            <div class="w-16 h-16 bg-white text-brand-blue rounded-full flex items-center justify-center text-3xl font-serif font-bold mx-auto mb-4 shadow-lg relative z-10">A</div>
+            <h2 class="text-2xl font-serif font-bold text-white relative z-10">Admin Portal</h2>
+            <p class="text-blue-200 text-sm relative z-10">AIACHE Management System</p>
+        </div>
+
+        <div class="p-8">
+            <form action="backend/auth.php" method="POST" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Username / Email</label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-3 text-gray-400"><i class="fas fa-user"></i></span>
+                        <input type="text" name="username" class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue focus:outline-none transition" placeholder="Enter admin ID" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Password</label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-3 text-gray-400"><i class="fas fa-lock"></i></span>
+                        <input type="password" name="password" class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue focus:outline-none transition" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center text-gray-600">
+                        <input type="checkbox" class="mr-2 rounded text-brand-blue focus:ring-brand-blue"> Remember me
+                    </label>
+                    <a href="#" class="text-brand-blue font-bold hover:underline">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="w-full bg-brand-blue text-white font-bold py-3 rounded-lg hover:bg-blue-800 transition shadow-lg flex items-center justify-center gap-2 group">
+                    <span>Secure Login</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
+                </button>
+            </form>
+        </div>
+        <div class="bg-gray-50 p-4 text-center text-xs text-gray-500 border-t border-gray-100">
+            &copy; 2026 AIACHE. Authorized personnel only.
+        </div>
+    </div>
+
+</body>
+</html>

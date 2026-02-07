@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIACHE | All India Association for Christian Higher Education</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { blue: '#1e3a8a', dark: '#0f172a', light: '#f8fafc', gold: '#d97706', teal: '#0f766e' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(30, 58, 138, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-brand-light text-slate-700 font-sans antialiased overflow-x-hidden selection:bg-brand-gold selection:text-white">
+
+    <div class="bg-brand-dark text-slate-300 py-2 text-xs border-b border-slate-800">
+        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span class="hidden sm:flex items-center gap-2"><i class="fas fa-phone-alt text-brand-gold"></i> +91-9444761101</span>
+                <span class="flex items-center gap-2"><i class="fas fa-envelope text-brand-gold"></i> aiache2011@gmail.com</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="hover:text-brand-gold transition flex items-center gap-1"><i class="fas fa-lock"></i> Admin Login</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 bg-brand-blue rounded-xl flex items-center justify-center text-white font-serif font-bold text-2xl shadow-lg group-hover:bg-brand-gold transition-colors duration-300">A</div>
+                <div class="flex flex-col">
+                    <h1 class="text-2xl font-serif font-bold text-brand-blue leading-none tracking-tight group-hover:text-brand-dark transition-colors">AIACHE</h1>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 font-medium">Est. 1967 • New Delhi</p>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-sm text-gray-600">
+                <a href="index.html" class="text-brand-blue font-bold">Home</a>
+                <a href="members.php" class="hover:text-brand-blue transition">Members</a>
+                <a href="events.php" class="hover:text-brand-blue transition">Events & News</a>
+                <a href="gallery.php" class="hover:text-brand-blue transition">Gallery</a>
+                <a href="resources.php" class="hover:text-brand-blue transition">Downloads</a>
+            </div>
+
+            <div class="hidden lg:block">
+                <a href="#contact" class="bg-brand-blue hover:bg-blue-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition shadow-lg flex items-center gap-2">
+                    Contact Us <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-brand-blue text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl">
+            <div class="p-4 space-y-4 flex flex-col font-medium">
+                <a href="index.html" class="text-brand-blue bg-blue-50 px-4 py-2 rounded-lg">Home</a>
+                <a href="members.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Members</a>
+                <a href="events.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Events</a>
+                <a href="gallery.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Gallery</a>
+                <a href="resources.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Downloads</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative h-[600px] flex items-center bg-hero-pattern bg-cover bg-center text-white overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-gold rounded-full opacity-10 blur-3xl transform translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+        
+        <div class="container mx-auto px-4 md:px-8 relative z-10 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-2/3 space-y-8" data-aos="fade-up">
+                <div class="inline-block bg-brand-gold/20 backdrop-blur-sm border border-brand-gold/30 text-brand-gold px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                    <i class="fas fa-star mr-1"></i> Serving since 1967
+                </div>
+                <h1 class="text-4xl md:text-6xl font-serif font-bold leading-tight text-shadow">
+                    Excellence in <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-amber-500">Higher Education</span>
+                </h1>
+                <p class="text-lg text-slate-200 leading-relaxed max-w-2xl font-light">
+                    Uniting over 500 Christian higher education institutions across India to foster moral integrity and academic brilliance.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="members.php" class="bg-brand-gold hover:bg-amber-600 text-white px-8 py-3.5 rounded-lg font-bold shadow-lg transition hover:-translate-y-1">Explore Members</a>
+                    <a href="events.php" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-3.5 rounded-lg font-bold transition hover:-translate-y-1">Latest News</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-brand-blue mb-4">Our Network</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">A vast network of colleges across Southern India.</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
+                <a href="members.php" class="p-6 border rounded-xl hover:shadow-lg transition"><h3 class="font-bold text-lg">Kerala</h3></a>
+                <a href="members.php" class="p-6 border rounded-xl hover:shadow-lg transition"><h3 class="font-bold text-lg">Tamil Nadu</h3></a>
+                <a href="members.php" class="p-6 border rounded-xl hover:shadow-lg transition"><h3 class="font-bold text-lg">Karnataka</h3></a>
+                <a href="members.php" class="p-6 border rounded-xl hover:shadow-lg transition"><h3 class="font-bold text-lg">Andhra & TS</h3></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-dark text-white py-8 text-center text-sm border-t border-slate-800">
+        <p>&copy; 2026 AIACHE. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        AOS.init({ once: true, offset: 100, duration: 800 });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
