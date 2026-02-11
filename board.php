@@ -63,7 +63,7 @@
                 <a href="events.php" class="hover:text-brand-blue transition">Events</a>
                 <a href="gallery.php" class="hover:text-brand-blue transition">Gallery</a>
                 <a href="resources.php" class="hover:text-brand-blue transition">Downloads</a>
-                <a href="contact.php" class="hover:text-brand-blue transition">Contact</a>
+
             </div>
             <button class="md:hidden text-brand-blue text-2xl"><i class="fas fa-bars"></i></button>
         </div>

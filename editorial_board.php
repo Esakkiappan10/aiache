@@ -78,29 +78,41 @@
                 <a href="events.php" class="hover:text-brand-blue transition">Events & News</a>
                 <a href="gallery.php" class="hover:text-brand-blue transition">Gallery</a>
                 <a href="resources.php" class="hover:text-brand-blue transition">Downloads</a>
-                <a href="contact.php" class="hover:text-brand-blue transition">Contact</a>
+
             </div>
             <button id="mobile-menu-btn" class="md:hidden text-brand-blue text-2xl"><i class="fas fa-bars"></i></button>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl z-50">
-            <div class="p-4 space-y-4 flex flex-col font-medium">
-                <a href="index.html" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Home</a>
-                <a href="about.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">About Us</a>
-                <div class="pl-4 border-l-2 border-brand-blue ml-4">
-                    <span class="text-xs font-bold text-gray-400 uppercase">Our Team</span>
-                    <a href="administration.php" class="block py-2 text-gray-600 hover:text-brand-blue">Administration</a>
-                    <a href="executive_board.php" class="block py-2 text-gray-600 hover:text-brand-blue">Executive Board</a>
-                    <a href="editorial_board.php" class="block py-2 text-brand-blue font-bold">Editorial Board</a>
-                    <a href="founders.php" class="block py-2 text-gray-600 hover:text-brand-blue">Founders</a>
-                    <a href="former_leaders.php" class="block py-2 text-gray-600 hover:text-brand-blue">Former Leaders</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl z-50">
+            <div class="p-4 space-y-3 flex flex-col font-medium max-h-[80vh] overflow-y-auto">
+                <a href="index.html" class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Home</a>
+                <a href="about.php" class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">About Us</a>
+                
+                <div class="space-y-1">
+                    <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-2">Our Team</p>
+                    <div class="pl-4 border-l-2 border-gray-100 ml-4 space-y-1">
+                        <a href="administration.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Administration</a>
+                        <a href="executive_board.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Executive Board</a>
+                        <a href="editorial_board.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Editorial Board</a>
+                        <a href="founders.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Founders</a>
+                        <a href="former_leaders.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Former Leaders</a>
+                    </div>
                 </div>
-                <a href="members.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Members</a>
-                <a href="events.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Events</a>
-                <a href="gallery.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Gallery</a>
-                <a href="resources.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Downloads</a>
-                <a href="contact.php" class="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">Contact</a>
+
+                <a href="members.php" class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Members</a>
+                <a href="events.php" class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Events & News</a>
+                <a href="gallery.php" class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Gallery</a>
+                
+                <div class="space-y-1">
+                    <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-2">Downloads</p>
+                    <div class="pl-4 border-l-2 border-gray-100 ml-4 space-y-1">
+                        <a href="resources.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Reports & Circulars</a>
+                        <a href="applications.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Applications</a>
+                    </div>
+                </div>
+
+                <a href="contact.php" class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Contact</a>
             </div>
         </div>
     </nav>

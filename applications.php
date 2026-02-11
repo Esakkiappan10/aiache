@@ -58,7 +58,7 @@ include 'backend/db.php';
                     </div>
                 </div>
 
-                <a href="contact.php" class="hover:text-brand-blue transition">Contact</a>
+
             </div>
             <button class="md:hidden text-brand-blue text-2xl"><i class="fas fa-bars"></i></button>
         </div>

@@ -124,7 +124,7 @@ $life_members = getMembers($conn, "LIFEMEMBERS");
                         <a href="applications.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Applications</a>
                     </div>
                 </div>
-                <a href="contact.php" class="hover:text-brand-blue transition">Contact</a>
+
             </div>
             <button class="md:hidden text-brand-blue text-2xl"><i class="fas fa-bars"></i></button>
         </div>
