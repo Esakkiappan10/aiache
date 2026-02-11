@@ -39,7 +39,13 @@ $tn_count = getSafeCount($conn, "TAMILNADU");
 $ka_count = getSafeCount($conn, "KARNATAKA");
 $kl_count = getSafeCount($conn, "KERALA");
 $ap_count = getSafeCount($conn, "ANDHRA");
-$total_members = $tn_count + $ka_count + $kl_count + $ap_count;
+$north_count = getSafeCount($conn, "NORTHERN");
+$east_count = getSafeCount($conn, "EASTERN");
+$ne_count = getSafeCount($conn, "NORTHEAST");
+$west_count = getSafeCount($conn, "WESTERN");
+$life_count = getSafeCount($conn, "LIFEMEMBERS");
+
+$total_members = $tn_count + $ka_count + $kl_count + $ap_count + $north_count + $east_count + $ne_count + $west_count + $life_count;
 
 $total_events = getSafeCount($conn, "collegeevents");
 $total_downloads = getSafeCount($conn, "adminpdfupload");
@@ -202,6 +208,11 @@ $events_list = getSafeRows($conn, "collegeevents", 10);
                             <option value="KERALA">Kerala</option>
                             <option value="KARNATAKA">Karnataka</option>
                             <option value="ANDHRA">Andhra Pradesh</option>
+                            <option value="NORTHERN">Northern Region</option>
+                            <option value="EASTERN">Eastern Region</option>
+                            <option value="NORTHEAST">North East Region</option>
+                            <option value="WESTERN">Western Region</option>
+                            <option value="LIFEMEMBERS">Life Members</option>
                         </select>
                         <div class="relative w-full sm:w-64">
                             <input type="text" class="bg-gray-50 border border-gray-300 text-gray-700 text-xs rounded-lg focus:ring-brand-blue focus:border-brand-blue block w-full p-2.5 pl-9 outline-none" placeholder="Search LM ID or Name...">
@@ -297,11 +308,59 @@ $events_list = getSafeRows($conn, "collegeevents", 10);
                 </div>
             </div>
 
-            <div id="section-files" class="admin-section hidden">
-                <div class="bg-white p-12 rounded-xl border border-dashed border-gray-300 text-center text-gray-400">
-                    <i class="fas fa-cloud-upload-alt text-4xl mb-4"></i>
-                    <h3 class="text-gray-600 font-bold">File Manager</h3>
-                    <p class="text-xs mt-1">Upload functionality coming in next update.</p>
+            <div id="section-files" class="admin-section hidden space-y-4">
+                <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <h2 class="font-bold text-gray-700">File Manager (Reports & Circulars)</h2>
+                    <button onclick="toggleModal('uploadFileModal')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-xs flex items-center gap-2 shadow-md transition transform hover:scale-105">
+                        <i class="fas fa-cloud-upload-alt"></i> Upload New File
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-gray-50 text-xs uppercase text-gray-500 font-semibold border-b border-gray-200">
+                                <tr>
+                                    <th class="px-6 py-3">Date</th>
+                                    <th class="px-6 py-3">Title</th>
+                                    <th class="px-6 py-3">Category</th>
+                                    <th class="px-6 py-3">Filename</th>
+                                    <th class="px-6 py-3 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 text-sm">
+                                <?php 
+                                $files_list = getSafeRows($conn, "adminpdfupload", 20); 
+                                if ($files_list): 
+                                    while($row = $files_list->fetch_assoc()): ?>
+                                    <tr class="hover:bg-purple-50/30 transition group">
+                                        <td class="px-6 py-3 text-gray-500 text-xs whitespace-nowrap">
+                                            <?php echo !empty($row['report_date']) ? date("d M Y", strtotime($row['report_date'])) : '-'; ?>
+                                        </td>
+                                        <td class="px-6 py-3 font-medium text-gray-800">
+                                            <?php echo htmlspecialchars($row['title']); ?>
+                                            <?php if(!empty($row['description'])): ?>
+                                                <p class="text-xs text-gray-400 font-normal truncate max-w-xs"><?php echo htmlspecialchars($row['description']); ?></p>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="px-6 py-3">
+                                            <span class="px-2 py-1 rounded text-[10px] font-bold <?php echo ($row['category'] == 'Application') ? 'bg-teal-100 text-teal-700' : 'bg-gray-100 text-gray-600'; ?>">
+                                                <?php echo htmlspecialchars($row['category'] ?? 'Report'); ?>
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-3 text-gray-500 text-xs font-mono"><?php echo htmlspecialchars($row['filename']); ?></td>
+                                        <td class="px-6 py-3 text-right">
+                                            <a href="uploads/<?php echo htmlspecialchars($row['filename']); ?>" target="_blank" class="text-blue-500 hover:text-blue-700 mr-2" title="View"><i class="fas fa-eye"></i></a>
+                                            <a href="backend/delete_file.php?id=<?php echo $row['id']; ?>" class="text-red-400 hover:text-red-500" onclick="return confirm('Delete this file?')" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    <?php endwhile; ?>
+                                <?php else: ?>
+                                    <tr><td colspan="4" class="px-6 py-12 text-center text-gray-400">No files uploaded yet.</td></tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -321,18 +380,27 @@ $events_list = getSafeRows($conn, "collegeevents", 10);
                         <input type="text" name="lm_number" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-brand-blue outline-none" required>
                     </div>
                     <div>
-                        <label class="text-[10px] font-bold text-gray-500 uppercase">State</label>
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">State/Region</label>
                         <select name="state" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm outline-none bg-white">
                             <option value="TAMILNADU">Tamil Nadu</option>
                             <option value="KARNATAKA">Karnataka</option>
                             <option value="KERALA">Kerala</option>
-                            <option value="ANDHRA">Andhra</option>
+                            <option value="ANDHRA">Andhra Pradesh</option>
+                            <option value="NORTHERN">Northern Region</option>
+                            <option value="EASTERN">Eastern Region</option>
+                            <option value="NORTHEAST">North East Region</option>
+                            <option value="WESTERN">Western Region</option>
+                            <option value="LIFEMEMBERS">Life Members</option>
                         </select>
                     </div>
                 </div>
                 <div>
                     <label class="text-[10px] font-bold text-gray-500 uppercase">College Name</label>
                     <input type="text" name="name" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-brand-blue outline-none" required>
+                </div>
+                <div>
+                     <label class="text-[10px] font-bold text-gray-500 uppercase">Website</label>
+                     <input type="text" name="website" placeholder="http://..." class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-brand-blue outline-none">
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>

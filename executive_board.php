@@ -57,6 +57,7 @@
                         <a href="executive_board.php" class="block px-4 py-2 text-brand-blue bg-blue-50 font-bold">Executive Board</a>
                         <a href="founders.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition">Founders</a>
                         <a href="former_leaders.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition">Former Leaders</a>
+                        <a href="editorial_board.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition">Editorial Board</a>
                     </div>
                 </div>
 

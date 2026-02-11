@@ -81,13 +81,23 @@ try {
                         <a href="executive_board.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Executive Board</a>
                         <a href="founders.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Founders</a>
                         <a href="former_leaders.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Former Leaders</a>
+                        <a href="editorial_board.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Editorial Board</a>
                     </div>
                 </div>
 
                 <a href="members.php" class="hover:text-brand-blue transition">Members</a>
                 <a href="#" class="text-brand-blue font-bold">Events</a>
                 <a href="gallery.php" class="hover:text-brand-blue transition">Gallery</a>
-                <a href="resources.php" class="hover:text-brand-blue transition">Downloads</a>
+                <!-- Downloads Dropdown -->
+                <div class="relative group">
+                    <button class="flex items-center gap-1 hover:text-brand-blue transition font-medium">
+                        Downloads <i class="fas fa-chevron-down text-xs ml-1"></i>
+                    </button>
+                    <div class="absolute top-full left-0 w-56 bg-white shadow-xl rounded-xl mt-2 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top border border-gray-100 z-50 text-left">
+                        <a href="resources.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Reports</a>
+                        <a href="applications.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Applications</a>
+                    </div>
+                </div>
                 <a href="contact.php" class="hover:text-brand-blue transition">Contact</a>
             </div>
             <button class="md:hidden text-brand-blue text-2xl"><i class="fas fa-bars"></i></button>

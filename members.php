@@ -4,7 +4,6 @@ include 'backend/db.php';
 // Safe fetch function
 function getMembers($conn, $table) {
     $rows = [];
-    // Try catching errors if table missing
     try {
         $check = $conn->query("SHOW TABLES LIKE '$table'");
         if($check && $check->num_rows > 0) {
@@ -16,10 +15,23 @@ function getMembers($conn, $table) {
     return $rows;
 }
 
+function formatUrl($url) {
+    if (empty($url)) return '';
+    if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
+        return "http://" . $url;
+    }
+    return $url;
+}
+
 $tn_members = getMembers($conn, "TAMILNADU");
 $ka_members = getMembers($conn, "KARNATAKA");
 $kl_members = getMembers($conn, "KERALA");
-$ap_members = getMembers($conn, "ANDHRA");
+$ap_members = getMembers($conn, "ANDHRA"); // Updated Table
+$north_members = getMembers($conn, "NORTHERN");
+$east_members = getMembers($conn, "EASTERN");
+$ne_members = getMembers($conn, "NORTHEAST");
+$west_members = getMembers($conn, "WESTERN");
+$life_members = getMembers($conn, "LIFEMEMBERS");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -63,6 +75,12 @@ $ap_members = getMembers($conn, "ANDHRA");
         .table-container::-webkit-scrollbar-track { background: #f1f1f1; }
         .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .table-container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .tab-btn.active {
+            background-color: #1e3a8a;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-700 font-sans antialiased flex flex-col min-h-screen">
@@ -89,13 +107,23 @@ $ap_members = getMembers($conn, "ANDHRA");
                         <a href="executive_board.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Executive Board</a>
                         <a href="founders.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Founders</a>
                         <a href="former_leaders.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Former Leaders</a>
+                        <a href="editorial_board.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Editorial Board</a>
                     </div>
                 </div>
 
                 <a href="#" class="text-brand-blue font-bold">Members</a>
                 <a href="events.php" class="hover:text-brand-blue transition">Events</a>
                 <a href="gallery.php" class="hover:text-brand-blue transition">Gallery</a>
-                <a href="resources.php" class="hover:text-brand-blue transition">Downloads</a>
+                <!-- Downloads Dropdown -->
+                <div class="relative group">
+                    <button class="flex items-center gap-1 hover:text-brand-blue transition font-medium">
+                        Downloads <i class="fas fa-chevron-down text-xs ml-1"></i>
+                    </button>
+                    <div class="absolute top-full left-0 w-56 bg-white shadow-xl rounded-xl mt-2 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top border border-gray-100 z-50 text-left">
+                        <a href="resources.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Reports</a>
+                        <a href="applications.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Applications</a>
+                    </div>
+                </div>
                 <a href="contact.php" class="hover:text-brand-blue transition">Contact</a>
             </div>
             <button class="md:hidden text-brand-blue text-2xl"><i class="fas fa-bars"></i></button>
@@ -109,42 +137,52 @@ $ap_members = getMembers($conn, "ANDHRA");
         <div class="container mx-auto px-4 relative z-10">
             <h1 class="text-3xl md:text-4xl font-serif font-bold mb-2">Member Institutions</h1>
             <p class="text-blue-200 text-sm md:text-base font-light max-w-xl mx-auto">
-                A robust network of excellence uniting Christian higher education institutions across South India.
+                A robust network of excellence uniting Christian higher education institutions across India.
             </p>
         </div>
     </section>
 
-    <div class="container mx-auto px-4 md:px-8 -mt-8 relative z-10">
-        <div class="bg-white rounded-xl shadow-lg p-2 flex flex-wrap justify-center gap-2 border border-gray-100 overflow-x-auto no-scrollbar">
-            <button onclick="switchTab('tn')" class="tab-btn active px-6 py-2.5 rounded-lg text-sm font-bold transition bg-brand-blue text-white shadow-md transform hover:-translate-y-0.5" id="btn-tn">Tamil Nadu</button>
-            <button onclick="switchTab('ka')" class="tab-btn px-6 py-2.5 rounded-lg text-sm font-bold text-gray-600 hover:bg-gray-50 transition transform hover:-translate-y-0.5" id="btn-ka">Karnataka</button>
-            <button onclick="switchTab('kl')" class="tab-btn px-6 py-2.5 rounded-lg text-sm font-bold text-gray-600 hover:bg-gray-50 transition transform hover:-translate-y-0.5" id="btn-kl">Kerala</button>
-            <button onclick="switchTab('ap')" class="tab-btn px-6 py-2.5 rounded-lg text-sm font-bold text-gray-600 hover:bg-gray-50 transition transform hover:-translate-y-0.5" id="btn-ap">Andhra & TS</button>
+    <div class="container mx-auto px-4 md:px-8 -mt-8 relative z-10 sm:max-w-6xl">
+        <div class="bg-white rounded-xl shadow-lg p-3 flex gap-2 border border-gray-100 overflow-x-auto no-scrollbar justify-start md:justify-center snap-x whitespace-nowrap">
+            <button onclick="switchTab('ap')" class="tab-btn active px-5 py-2.5 rounded-lg text-xs md:text-sm font-bold transition text-gray-600 hover:bg-gray-50 snap-center" id="btn-ap">Andhra Region</button>
+            <button onclick="switchTab('tn')" class="tab-btn px-5 py-2.5 rounded-lg text-xs md:text-sm font-bold transition text-gray-600 hover:bg-gray-50 snap-center" id="btn-tn">Tamil Nadu</button>
+            <button onclick="switchTab('ka')" class="tab-btn px-5 py-2.5 rounded-lg text-xs md:text-sm font-bold transition text-gray-600 hover:bg-gray-50 snap-center" id="btn-ka">Karnataka</button>
+            <button onclick="switchTab('kl')" class="tab-btn px-5 py-2.5 rounded-lg text-xs md:text-sm font-bold transition text-gray-600 hover:bg-gray-50 snap-center" id="btn-kl">Kerala</button>
+            <button onclick="switchTab('north')" class="tab-btn px-5 py-2.5 rounded-lg text-xs md:text-sm font-bold transition text-gray-600 hover:bg-gray-50 snap-center" id="btn-north">Northern</button>
+            <button onclick="switchTab('east')" class="tab-btn px-5 py-2.5 rounded-lg text-xs md:text-sm font-bold transition text-gray-600 hover:bg-gray-50 snap-center" id="btn-east">Eastern</button>
+            <button onclick="switchTab('ne')" class="tab-btn px-5 py-2.5 rounded-lg text-xs md:text-sm font-bold transition text-gray-600 hover:bg-gray-50 snap-center" id="btn-ne">North East</button>
+            <button onclick="switchTab('west')" class="tab-btn px-5 py-2.5 rounded-lg text-xs md:text-sm font-bold transition text-gray-600 hover:bg-gray-50 snap-center" id="btn-west">Western</button>
+            <button onclick="switchTab('life')" class="tab-btn px-5 py-2.5 rounded-lg text-xs md:text-sm font-bold transition text-gray-600 hover:bg-gray-50 snap-center" id="btn-life">Life Members</button>
         </div>
     </div>
 
     <section class="py-12 flex-grow">
         <div class="container mx-auto px-4 md:px-8">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden min-h-[400px]">
                 
                 <?php 
                 $states = [
+                    'ap' => $ap_members,
                     'tn' => $tn_members, 
                     'ka' => $ka_members, 
                     'kl' => $kl_members, 
-                    'ap' => $ap_members
+                    'north' => $north_members,
+                    'east' => $east_members,
+                    'ne' => $ne_members,
+                    'west' => $west_members,
+                    'life' => $life_members
                 ];
                 
                 foreach ($states as $key => $members): 
-                    $hiddenClass = ($key === 'tn') ? '' : 'hidden';
+                    $hiddenClass = ($key === 'ap') ? '' : 'hidden'; // Default to AP as per request to see changes
                 ?>
                 <div id="content-<?php echo $key; ?>" class="state-content table-container overflow-x-auto <?php echo $hiddenClass; ?>">
                     <table class="w-full text-sm text-left">
                         <thead class="text-xs font-semibold text-gray-500 uppercase bg-gray-50 border-b border-gray-100">
                             <tr>
-                                <th class="px-6 py-4 whitespace-nowrap">LM Number</th>
+                                <th class="px-6 py-4 whitespace-nowrap w-24">LM Number</th>
                                 <th class="px-6 py-4">Institution Details</th>
-                                <th class="px-6 py-4">Head of Institution</th>
+                                <th class="px-6 py-4 w-64">Contact Info</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
@@ -152,32 +190,42 @@ $ap_members = getMembers($conn, "ANDHRA");
                                 <?php foreach ($members as $row): ?>
                                 <tr class="bg-white hover:bg-brand-light transition duration-150 group">
                                     
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="font-mono text-xs font-bold text-brand-blue bg-blue-50 px-2 py-1 rounded border border-blue-100">
+                                    <td class="px-6 py-4 whitespace-nowrap align-top">
+                                        <span class="font-mono text-xs font-bold text-brand-blue bg-blue-50 px-2 py-1 rounded border border-blue-100 inline-block">
                                             <?php echo htmlspecialchars($row['LM_NO']); ?>
                                         </span>
                                     </td>
                                     
-                                    <td class="px-6 py-4">
-                                        <div class="font-bold text-gray-800 text-base group-hover:text-brand-blue transition-colors">
+                                    <td class="px-6 py-4 align-top">
+                                        <div class="font-bold text-gray-900 text-base mb-1">
                                             <?php echo htmlspecialchars($row['Name_of_the_College']); ?>
                                         </div>
+                                        <?php if (!empty($row['Website'])): ?>
+                                            <a href="<?php echo htmlspecialchars(formatUrl($row['Website'])); ?>" target="_blank" class="inline-flex items-center gap-1 text-xs text-brand-blue hover:underline font-medium bg-blue-50/50 px-2 py-0.5 rounded-full mt-1">
+                                                <i class="fas fa-globe text-[10px]"></i> Visit Website
+                                            </a>
+                                        <?php endif; ?>
                                     </td>
                                     
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 shrink-0">
-                                                <i class="fas fa-user-tie text-xs"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-medium text-gray-900 text-sm">
-                                                    <?php echo htmlspecialchars($row['Principal_Name']); ?>
+                                    <td class="px-6 py-4 align-top">
+                                        <div class="flex flex-col gap-2">
+                                            <?php if (!empty($row['Principal_Name'])): ?>
+                                            <div class="flex items-start gap-2">
+                                                <div class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center text-gray-400 shrink-0 mt-0.5">
+                                                    <i class="fas fa-user text-[10px]"></i>
                                                 </div>
-                                                <div class="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
-                                                    <i class="fas fa-phone-alt text-[10px] text-brand-gold"></i> 
-                                                    <?php echo htmlspecialchars($row['Phone_No']); ?>
-                                                </div>
+                                                <span class="text-sm text-gray-700 font-medium"><?php echo htmlspecialchars($row['Principal_Name']); ?></span>
                                             </div>
+                                            <?php endif; ?>
+
+                                            <?php if (!empty($row['Phone_No'])): ?>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center text-gray-400 shrink-0">
+                                                    <i class="fas fa-phone text-[10px]"></i>
+                                                </div>
+                                                <span class="text-xs text-gray-500 font-mono"><?php echo htmlspecialchars($row['Phone_No']); ?></span>
+                                            </div>
+                                            <?php endif; ?>
                                         </div>
                                     </td>
 
@@ -185,12 +233,12 @@ $ap_members = getMembers($conn, "ANDHRA");
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="3" class="px-6 py-12 text-center">
-                                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4 text-gray-400">
-                                            <i class="fas fa-database text-2xl"></i>
+                                    <td colspan="3" class="px-6 py-16 text-center">
+                                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-50 rounded-full mb-4 text-gray-300">
+                                            <i class="fas fa-folder-open text-2xl"></i>
                                         </div>
                                         <h3 class="text-gray-800 font-bold">No Records Found</h3>
-                                        <p class="text-gray-500 text-xs mt-1">There are currently no members listed for this state.</p>
+                                        <p class="text-gray-500 text-xs mt-1">There are currently no members listed for this region.</p>
                                     </td>
                                 </tr>
                             <?php endif; ?>
@@ -216,8 +264,7 @@ $ap_members = getMembers($conn, "ANDHRA");
             
             // Reset all buttons to default style
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-brand-blue', 'text-white', 'shadow-md');
-                btn.classList.add('text-gray-600', 'hover:bg-gray-50');
+                btn.classList.remove('active');
             });
             
             // Show selected content
@@ -226,10 +273,7 @@ $ap_members = getMembers($conn, "ANDHRA");
             
             // Highlight selected button
             const btn = document.getElementById(`btn-${state}`);
-            if(btn) {
-                btn.classList.remove('text-gray-600', 'hover:bg-gray-50');
-                btn.classList.add('bg-brand-blue', 'text-white', 'shadow-md');
-            }
+            if(btn) btn.classList.add('active');
         }
     </script>
 </body>

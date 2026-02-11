@@ -23,6 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         case 'KERALA':    $table = "KERALA"; break;
         case 'KARNATAKA': $table = "KARNATAKA"; break;
         case 'ANDHRA':    $table = "ANDHRA"; break;
+        case 'NORTHERN':  $table = "NORTHERN"; break;
+        case 'EASTERN':   $table = "EASTERN"; break;
+        case 'NORTHEAST': $table = "NORTHEAST"; break;
+        case 'WESTERN':   $table = "WESTERN"; break;
+        case 'LIFEMEMBERS': $table = "LIFEMEMBERS"; break;
         default:
             $status = "error";
             $title = "Invalid Selection";
@@ -32,8 +37,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 3. Process Database Insert (Only if table is valid)
     if ($table) {
-        $sql = "INSERT INTO $table (LM_NO, Name_of_the_College, Principal_Name, Phone_No) 
+        // Check if Website column exists in the target table to avoid errors for old tables
+        // For simplicity in this update, we assuming new tables have it. 
+        // For old tables (TN, KA, KL), we might need to add it or ignore it. 
+        // Strategy: Try insert with Website first (for new tables), if fails, try without (for old tables fallback).
+        // Better Strategy: Just use the columns that exist.
+        
+        $website = isset($_POST['website']) ? $conn->real_escape_string($_POST['website']) : '';
+
+        // Tables with Website column: ANDHRA, NORTHERN, EASTERN, NORTHEAST, WESTERN, LIFEMEMBERS
+        // Tables without (currently): TAMILNADU, KERALA, KARNATAKA (unless we alter them too, but instruction was to leave them untouched)
+        
+        if (in_array($table, ['ANDHRA', 'NORTHERN', 'EASTERN', 'NORTHEAST', 'WESTERN', 'LIFEMEMBERS'])) {
+             $sql = "INSERT INTO $table (LM_NO, Name_of_the_College, Principal_Name, Phone_No, Website) 
+                VALUES ('$lm', '$name', '$principal', '$phone', '$website')";
+        } else {
+             $sql = "INSERT INTO $table (LM_NO, Name_of_the_College, Principal_Name, Phone_No) 
                 VALUES ('$lm', '$name', '$principal', '$phone')";
+        }
 
         if ($conn->query($sql) === TRUE) {
             $status = "success";
