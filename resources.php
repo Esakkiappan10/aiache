@@ -4,7 +4,7 @@ $result = false;
 try {
     $check = $conn->query("SHOW TABLES LIKE 'adminpdfupload'");
     if($check && $check->num_rows > 0) {
-        $sql = "SELECT * FROM adminpdfupload WHERE category = 'Report' OR category IS NULL ORDER BY report_date DESC, id DESC"; 
+        $sql = "SELECT * FROM adminpdfupload WHERE category = 'Report' OR category = 'Archive' OR category IS NULL ORDER BY report_date DESC, id DESC"; 
         $result = $conn->query($sql);
     }
 } catch(Exception $e) {}

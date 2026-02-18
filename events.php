@@ -153,16 +153,18 @@ try {
                                 <span class="text-xs font-bold text-brand-gold uppercase tracking-wider">Announcement</span>
                             </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif leading-tight group-hover:text-brand-blue transition-colors">
-                                <?php echo $title; ?>
+                                <a href="event_details.php?id=<?php echo $row['id']; ?>" class="hover:underline">
+                                    <?php echo $title; ?>
+                                </a>
                             </h3>
                             <p class="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-3">
                                 <?php echo $desc; ?>
                             </p>
                             
                             <div class="mt-auto pt-6 border-t border-gray-50">
-                                <span class="inline-flex items-center text-sm font-bold text-brand-blue group-hover:text-brand-gold transition-colors">
+                                <a href="event_details.php?id=<?php echo $row['id']; ?>" class="inline-flex items-center text-sm font-bold text-brand-blue group-hover:text-brand-gold transition-colors">
                                     Read Full Details <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
-                                </span>
+                                </a>
                             </div>
                         </div>
                     </article>

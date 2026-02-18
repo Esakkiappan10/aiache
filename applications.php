@@ -77,6 +77,52 @@ include 'backend/db.php';
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
+                <!-- Static Core Applications -->
+                <!-- Life Membership -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-8 hover:shadow-2xl transition duration-300 hover:-translate-y-2 group relative overflow-hidden h-full flex flex-col">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2 opacity-50"></div>
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-brand-blue mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300 shadow-sm z-10">
+                        <i class="fas fa-id-card text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-gray-800 text-xl mb-3 z-10 min-h-[56px]">Life Membership Application</h3>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed z-10 flex-grow">
+                        Become a lifetime member of AIACHE. Download the official application form here.
+                    </p>
+                    <a href="Life Membership Application form.pdf" download class="inline-flex items-center justify-center gap-2 text-white font-bold text-sm bg-brand-blue px-6 py-3 rounded-lg hover:bg-brand-gold transition-colors w-full shadow-md z-10 mt-auto">
+                        <i class="fas fa-download"></i> Download Application
+                    </a>
+                </div>
+
+                <!-- Annual Membership -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-8 hover:shadow-2xl transition duration-300 hover:-translate-y-2 group relative overflow-hidden h-full flex flex-col">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2 opacity-50"></div>
+                    <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-white transition-colors duration-300 shadow-sm z-10">
+                        <i class="fas fa-calendar-check text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-gray-800 text-xl mb-3 z-10 min-h-[56px]">Annual Membership Application</h3>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed z-10 flex-grow">
+                        Apply for annual membership renewal or new registration. Download the form.
+                    </p>
+                    <a href="Annual Membership Application form.pdf" download class="inline-flex items-center justify-center gap-2 text-white font-bold text-sm bg-brand-blue px-6 py-3 rounded-lg hover:bg-brand-gold transition-colors w-full shadow-md z-10 mt-auto">
+                        <i class="fas fa-download"></i> Download Application
+                    </a>
+                </div>
+
+                <!-- Individual Friend -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-8 hover:shadow-2xl transition duration-300 hover:-translate-y-2 group relative overflow-hidden h-full flex flex-col">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2 opacity-50"></div>
+                    <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-teal-600 mb-6 group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300 shadow-sm z-10">
+                        <i class="fas fa-user-friends text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-gray-800 text-xl mb-3 z-10 min-h-[56px]">Individual Friend's Application</h3>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed z-10 flex-grow">
+                        Join as an individual friend of AIACHE. Download the application form.
+                    </p>
+                    <a href="Individual Friend's Application form.pdf" download class="inline-flex items-center justify-center gap-2 text-white font-bold text-sm bg-brand-blue px-6 py-3 rounded-lg hover:bg-brand-gold transition-colors w-full shadow-md z-10 mt-auto">
+                        <i class="fas fa-download"></i> Download Application
+                    </a>
+                </div>
+
                 <?php
                 // Fetch dynamic applications
                 $sql_apps = "SELECT * FROM adminpdfupload WHERE category = 'Application' ORDER BY id DESC";

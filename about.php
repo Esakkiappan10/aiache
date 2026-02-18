@@ -46,7 +46,18 @@
             <div class="hidden md:flex items-center space-x-8 font-medium text-sm text-gray-600">
                 <a href="index.html" class="hover:text-brand-blue transition">Home</a>
                 <a href="#" class="text-brand-blue font-bold">About Us</a>
-                <a href="board.php" class="hover:text-brand-blue transition">Our Team</a>
+                <div class="relative group">
+                    <button class="flex items-center gap-1 hover:text-brand-blue transition font-medium text-gray-600">
+                        Our Team <i class="fas fa-chevron-down text-xs ml-1"></i>
+                    </button>
+                    <div class="absolute top-full left-0 w-56 bg-white shadow-xl rounded-xl mt-2 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top border border-gray-100 z-50 text-left">
+                        <a href="administration.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Administration</a>
+                        <a href="executive_board.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Executive Board</a>
+                        <a href="founders.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Founders</a>
+                        <a href="former_leaders.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Former Leaders</a>
+                        <a href="editorial_board.php" class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Editorial Board</a>
+                    </div>
+                </div>
                 <a href="members.php" class="hover:text-brand-blue transition">Members</a>
                 <a href="events.php" class="hover:text-brand-blue transition">Events</a>
                 <a href="gallery.php" class="hover:text-brand-blue transition">Gallery</a>
@@ -95,7 +106,7 @@
                 </div>
                 <div class="relative">
                     <div class="absolute inset-0 bg-brand-gold/10 rounded-2xl transform translate-x-4 translate-y-4"></div>
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Education" class="relative rounded-2xl shadow-xl w-full h-auto object-cover">
+                    <img src="education.png" alt="Education" class="relative rounded-2xl shadow-xl w-full h-auto object-cover">
                 </div>
             </div>
         </div>
@@ -134,98 +145,182 @@
     </section>
 
     <!-- Structure & Governance -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4 md:px-8">
-            <h2 class="text-3xl font-serif font-bold text-center text-brand-blue mb-12">Our Structure & Assemblies</h2>
+    <section class="py-20 bg-white relative">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute top-[10%] left-[-5%] w-[30%] h-[30%] bg-brand-blue/5 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-brand-gold/5 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="container mx-auto px-4 md:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="bg-brand-blue/10 text-brand-blue px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 inline-block">Governance</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-6">Our Structure & Assemblies</h2>
+                <div class="w-20 h-1 bg-brand-gold mx-auto rounded-full"></div>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- TGA & AGM Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
                 <!-- TGA -->
-                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border-t-4 border-brand-gold relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 transition-transform group-hover:scale-150"></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center"><i class="fas fa-users text-brand-gold mr-3"></i> Triennial General Assembly (TGA)</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed relative z-10">
-                        Once in three years, all member institutions gather (Chairman/Manager, Principal, Staff Representative) for an ecumenical celebration of Christian fraternity. It is a public proclamation of our unity in Jesus Christ. We deliberate, pray, listen to the Word of God, and elect the Executive Board Members for the next term.
-                    </p>
+                <div class="bg-white p-10 rounded-3xl shadow-lg shadow-gray-100/50 border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:bg-brand-gold group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Triennial General Assembly (TGA)</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Once in three years, all member institutions gather (Chairman/Manager, Principal, Staff Representative) for an ecumenical celebration of Christian fraternity. It is a public proclamation of our unity in Jesus Christ. We deliberate, pray, listen to the Word of God, and elect the Executive Board Members for the next term.
+                        </p>
+                    </div>
                 </div>
                 <!-- AGM -->
-                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border-t-4 border-brand-blue relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand-blue/5 rounded-full -translate-y-1/2 translate-x-1/2 transition-transform group-hover:scale-150"></div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center"><i class="fas fa-calendar-alt text-brand-blue mr-3"></i> Annual General Body Meeting (AGM)</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed relative z-10">
-                        As a registered Society, we fulfill our statutory obligation by meeting annually. Representatives deliberate on current challenges, form committees for follow-up, ratify Executive Board decisions, approve annual reports, and propose relevant action plans.
-                    </p>
+                <div class="bg-white p-10 rounded-3xl shadow-lg shadow-gray-100/50 border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-blue/10 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-brand-blue text-2xl mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Annual General Body Meeting (AGM)</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            As a registered Society, we fulfill our statutory obligation by meeting annually. Representatives deliberate on current challenges, form committees for follow-up, ratify Executive Board decisions, approve annual reports, and propose relevant action plans.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                     <h3 class="text-2xl font-serif font-bold text-gray-800 mb-6">Operational Levels</h3>
-                     <div class="space-y-8">
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-brand-blue shrink-0 font-bold text-lg">01</div>
-                            <div>
-                                <h4 class="font-bold text-gray-800 text-lg">Regional Level</h4>
-                                <p class="text-gray-600 text-sm mt-2 leading-relaxed">
-                                    Coordinate activities through an elected Regional President, Secretary, and Treasurer. Annual meetings organize faculty and student leadership programs, funded by regional resources.
-                                </p>
-                            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Main Content: Operational Levels (Left 8 Cols) -->
+                <div class="lg:col-span-8 space-y-12">
+                     <div class="flex items-center gap-4 mb-2">
+                         <div class="h-px bg-gray-200 flex-grow"></div>
+                         <h3 class="text-2xl font-serif font-bold text-gray-900 whitespace-nowrap">Operational Levels</h3>
+                         <div class="h-px bg-gray-200 flex-grow"></div>
+                     </div>
+
+                     <!-- Regional Level -->
+                     <div class="relative pl-8 md:pl-12 py-2 group">
+                        <!-- Timeline Line -->
+                        <div class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-blue/30 to-brand-blue/30 lg:via-brand-blue/30 lg:to-transparent"></div>
+                        <div class="absolute left-[-20px] top-6 w-10 h-10 bg-white border-4 border-brand-blue/10 text-brand-blue rounded-full flex items-center justify-center shadow-sm z-10 font-bold text-sm">01</div>
+
+                        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-brand-blue text-sm"><i class="fas fa-map-marked-alt"></i></span>
+                                Regional Level
+                            </h4>
+                            <p class="text-gray-600 leading-relaxed text-justify">
+                                At the regional level, a Regional President, Secretary and Treasurer are elected before or after every Triennial to co-ordinate the regional activities, to strengthen AIACHE and to bring in new members. Regional expenses shall be met from the regional resources and no bank account is to be opened. Every year one meeting of the Chairman/Manager, Principal and Faculty representatives shall be convened and as per the regional planning, faculty and student leadership shall be organized.
+                            </p>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-brand-gold shrink-0 font-bold text-lg">02</div>
-                            <div>
-                                <h4 class="font-bold text-gray-800 text-lg">Institutional Level</h4>
-                                <p class="text-gray-600 text-sm mt-2 leading-relaxed">
-                                    The root of our faith formation. We follow the path of Dharma ("Satyam Vada, Dharmam Chara"). Principals and faculty serve as models of nobility. A Co-ordinator assists in organizing programs and communicating with the AIACHE office.
+                     </div>
+
+                     <!-- Institutional Level -->
+                     <div class="relative pl-8 md:pl-12 py-2 group">
+                        <!-- Timeline Line -->
+                        <div class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-brand-blue/30 via-brand-blue/30 to-transparent"></div>
+                        <div class="absolute left-[-20px] top-6 w-10 h-10 bg-white border-4 border-brand-gold/10 text-brand-gold rounded-full flex items-center justify-center shadow-sm z-10 font-bold text-sm">02</div>
+
+                        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h4 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-brand-gold text-sm"><i class="fas fa-university"></i></span>
+                                Institutional Level
+                            </h4>
+                            
+                            <div class="space-y-6 text-gray-600 leading-relaxed text-justify">
+                                <p>
+                                    Member Institutions are the base and root of our faith formation unit where Jesus Christ is projected as the Saviour of human race and all of us are saved through His Passion, Crucifixion and Resurrection. He is Truth incarnate and we have to be truthful in a country whose motto is <span class="font-medium text-brand-blue">"Satyameva Jayate"</span>. We have to follow the path of Dharma as Gandhiji instructed: <span class="italic">"Satyam Vada, Dharmam Chara"</span> (Speak Truth and Move in Dharma).
                                 </p>
+                                <div class="bg-brand-light p-6 rounded-2xl border border-brand-blue/10">
+                                    <p class="text-sm md:text-base font-medium text-gray-700 italic">
+                                        "It is AIACHE's concern that all our Principals and faculty are models of nobility and excellence to be imitated by students."
+                                    </p>
+                                </div>
+                                <p>
+                                    Students are to be formed with excellent character traits, skill performance and social concern. Bible study is to be encouraged for their growth in Biblical values and altruistic behaviour. Every student is helped to grow in his/her own spiritual/religious practices and respect for other's religious aspirations. The Christian model of brotherhood should be inherited with an attitude that every living being is a brother or sister to all.
+                                </p>
+                                <p>
+                                    Hence, in all our member institutions, some programmes should be organized to attain these objectives of AIACHE such that they become good leaders in society developing their skills and respecting one another and concerned in other's well being and progress. Our faculty and students should have awareness that all are precious gifts of God and try to consider everyone else as another precious gift to be respected as brother or sister.
+                                </p>
+                                <p>
+                                    When national or regional programmes are organized, all the member institutions are expected to send participants and later make use of their training for the edification of others in the campus and send them as regional resource persons. Members are also expected to contribute to the development of AIACHE as a unifying ecumenical body.
+                                </p>
+                                <div class="flex flex-col md:flex-row gap-4 mt-6">
+                                    <div class="flex-1 bg-amber-50 p-4 rounded-xl border border-amber-100">
+                                        <div class="font-bold text-brand-gold text-sm uppercase mb-1">Mandate</div>
+                                        <p class="text-sm text-gray-700">At least, one programme should be organized every year in all the member institutions, under the banner of AIACHE.</p>
+                                    </div>
+                                    <div class="flex-1 bg-blue-50 p-4 rounded-xl border border-blue-100">
+                                        <div class="font-bold text-brand-blue text-sm uppercase mb-1">Coordination</div>
+                                        <p class="text-sm text-gray-700">A Co-ordinator assists the Principal in organizing programmes and communicating with the AIACHE office.</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
-                            <h4 class="font-bold text-brand-blue text-sm uppercase tracking-wide mb-2">Office & Administration</h4>
-                            <p class="text-sm text-gray-600">The AIACHE office gives direction to members, follows national education policies (MHRD, UGC, NAAC), and publicizes relevant information. It manages endowments, awards, and the official website.</p>
                         </div>
                      </div>
                 </div>
 
-                <!-- Policies -->
-                 <div class="bg-brand-dark text-white p-8 md:p-10 rounded-3xl relative overflow-hidden shadow-xl flex flex-col justify-center">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                    <div class="absolute bottom-0 left-0 w-48 h-48 bg-brand-gold/10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4"></div>
-                    
-                    <div class="relative z-10">
-                        <div class="w-12 h-1 bg-brand-gold mb-6"></div>
-                        <h3 class="text-2xl font-serif font-bold mb-4">Constitutional Directives</h3>
-                        <p class="text-sm text-brand-light/80 mb-6">AIACHE specially upholds the following Constitutional rights for our member institutions:</p>
-                        
-                        <div class="space-y-4">
-                            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/10 transform hover:translate-x-1 transition">
-                                <div class="flex items-start gap-3">
-                                    <i class="fas fa-balance-scale text-brand-gold mt-1"></i>
-                                    <div>
-                                        <div class="font-bold text-white text-sm">Article 30(1)</div>
-                                        <div class="text-xs text-brand-light/70 mt-1">Right of minorities to establish and administer educational institutions of their choice.</div>
+                <!-- Sidebar: Constitutional Directives (Right 4 Cols) -->
+                <div class="lg:col-span-4 space-y-8">
+                    <div class="lg:sticky lg:top-24">
+                        <!-- Policies Card -->
+                        <div class="bg-brand-dark text-white p-8 rounded-3xl relative overflow-hidden shadow-2xl">
+                            <!-- Artistic Blobs -->
+                            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                            <div class="absolute bottom-0 left-0 w-48 h-48 bg-brand-gold/10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4"></div>
+                            
+                            <div class="relative z-10">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-gold"><i class="fas fa-scroll"></i></div>
+                                    <h3 class="text-xl font-serif font-bold">Constitutional Directives</h3>
+                                </div>
+                                
+                                <p class="text-sm text-brand-light/80 mb-8 leading-relaxed">AIACHE specially upholds the following Constitutional rights for our member institutions:</p>
+                                
+                                <div class="space-y-4">
+                                    <div class="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition cursor-default">
+                                        <div class="flex items-start gap-4">
+                                            <div class="mt-1"><i class="fas fa-balance-scale text-brand-gold"></i></div>
+                                            <div>
+                                                <div class="font-bold text-white text-sm">Article 30(1)</div>
+                                                <div class="text-xs text-brand-light/70 mt-1 leading-relaxed">Right of minorities to establish and administer educational institutions of their choice.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/10 transition cursor-default">
+                                        <div class="flex items-start gap-4">
+                                            <div class="mt-1"><i class="fas fa-gavel text-brand-gold"></i></div>
+                                            <div>
+                                                <div class="font-bold text-white text-sm">Article 19(1)(g)</div>
+                                                <div class="text-xs text-brand-light/70 mt-1 leading-relaxed">Freedom of citizens regarding speech, assembly, association, movement, residence, and profession.</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/10 transform hover:translate-x-1 transition">
-                                <div class="flex items-start gap-3">
-                                    <i class="fas fa-gavel text-brand-gold mt-1"></i>
-                                    <div>
-                                        <div class="font-bold text-white text-sm">Article 19(1)(g)</div>
-                                        <div class="text-xs text-brand-light/70 mt-1">Freedom of citizens regarding speech, assembly, association, movement, residence, and profession.</div>
+
+                                <div class="mt-8 pt-6 border-t border-white/10">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i class="fas fa-award text-brand-gold"></i>
+                                        <span class="text-sm font-bold text-white">Membership in Perpetuity</span>
                                     </div>
+                                    <p class="text-xs text-brand-light/60 leading-relaxed">Life Membership with Certificate of eligibility to Minority Rights.</p>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="mt-8 pt-6 border-t border-white/10">
-                            <div class="flex items-center gap-2 mb-1">
-                                <i class="fas fa-award text-brand-gold"></i>
-                                <span class="text-sm font-bold text-white">Membership in Perpetuity</span>
-                            </div>
-                            <p class="text-xs text-brand-light/60">Life Membership with Certificate of eligibility to Minority Rights.</p>
+                        
+                        <!-- Office & Admin Mini Card -->
+                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm mt-6">
+                            <h4 class="font-bold text-brand-blue text-sm uppercase tracking-wide mb-3 flex items-center gap-2">
+                                <i class="fas fa-building"></i> Office & Administration
+                            </h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                The AIACHE office directs members, follows national education policies (MHRD, UGC, NAAC), and manages endowments, awards, and the official website.
+                            </p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

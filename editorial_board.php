@@ -269,30 +269,30 @@
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition group flex items-start gap-4">
                     <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-lg flex-shrink-0">
                        <i class="fas fa-user"></i>
-                   </div>
-                   <div>
-                       <h4 class="font-bold text-gray-800 text-sm">Dr SARAH THOMAS</h4>
-                       <p class="text-xs text-gray-500 mt-1">St. Ann's College Of Education (Aut), Secunderabad</p>
-                   </div>
-               </div>
-
-               <!-- Member -->
-               <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition group flex items-start gap-4">
-                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-lg flex-shrink-0">
-                    <i class="fas fa-user"></i>
                     </div>
                     <div>
-                        <h4 class="font-bold text-gray-800 text-sm">Rev. Dr. Fr. XAVIER VEDAM S.J.</h4>
-                        <p class="text-xs text-gray-500 mt-1">Former Principal, Arul Anandar College, Karumathur & Loyola College, Mettala, TN</p>
+                        <h4 class="font-bold text-gray-800 text-sm">Dr SARAH THOMAS</h4>
+                        <p class="text-xs text-gray-500 mt-1">St. Ann's College Of Education (Aut), Secunderabad</p>
                     </div>
                 </div>
 
                 <!-- Member -->
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition group flex items-start gap-4">
-                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-lg flex-shrink-0">
-                    <i class="fas fa-user"></i>
-                    </div>
-                    <div>
+                     <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-lg flex-shrink-0 overflow-hidden">
+                        <img src="portfolio/1 Rev Dr Xavier Vedam SJ.png" alt="Rev. Dr. Fr. Xavier Vedam S.J." class="w-full h-full object-cover">
+                     </div>
+                     <div>
+                         <h4 class="font-bold text-gray-800 text-sm">Rev. Dr. Fr. XAVIER VEDAM S.J.</h4>
+                         <p class="text-xs text-gray-500 mt-1">Former Principal, Arul Anandar College, Karumathur & Loyola College, Mettala, TN</p>
+                     </div>
+                 </div>
+
+                 <!-- Member -->
+                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition group flex items-start gap-4">
+                     <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-lg flex-shrink-0">
+                     <i class="fas fa-user"></i>
+                     </div>
+                     <div>
                         <h4 class="font-bold text-gray-800 text-sm">PROF Fr JOESPH PUTHENPURA CMI</h4>
                         <p class="text-xs text-gray-500 mt-1">Former Principal, St. Aloysius Edathua, Kerala</p>
                     </div>

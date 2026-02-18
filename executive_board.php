@@ -90,94 +90,125 @@
                 <h2 class="text-2xl font-serif font-bold text-gray-800 text-center mb-10 border-b border-gray-100 pb-4 w-max mx-auto px-10">Board Members</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <!-- Member -->
+                    <!-- Member 2 -->
                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
-                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue">
-                            <i class="fas fa-user text-3xl text-gray-300"></i>
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                            <img src="portfolio/2 Dr. Sr. M. Rashmi A.C..jpg" alt="Member" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Rev. Dr. Gigi Thomas</h4>
-                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Dean of Studies</p>
-                        <p class="text-sm text-gray-600 mt-2">Mar Ivanios College, Kerala</p>
-                    </div>
-
-                    <!-- Member -->
-                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
-                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue">
-                             <i class="fas fa-user text-3xl text-gray-300"></i>
-                        </div>
-                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Sr. M. Rashmi A.C</h4>
-                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Principal</p>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Sr. M. Rashmi A.C.</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
                         <p class="text-sm text-gray-600 mt-2">Patna Women's College, Patna</p>
                     </div>
 
-                    <!-- Member -->
+                    <!-- Member 6 -->
                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
-                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue">
-                             <i class="fas fa-user text-3xl text-gray-300"></i>
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                            <img src="portfolio/6 Dr. Sr. Shiny K.P.jfif" alt="Member" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Rev. Dr. Sebastian Karottupuram</h4>
-                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Principal</p>
-                        <p class="text-sm text-gray-600 mt-2">Don Bosco College, Manipur</p>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Sr. Shiny K.P.</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
                     </div>
 
-                    <!-- Member -->
-                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
-                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue">
-                             <i class="fas fa-user text-3xl text-gray-300"></i>
+                    <!-- Member 7 -->
+                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                            <img src="portfolio/7 Rev. Dr. Charles Lasrado SJ,.jfif" alt="Member" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Sr. Ananda Amritmahal</h4>
-                         <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Principal</p>
-                        <p class="text-sm text-gray-600 mt-2">Sophia College for Women, Mumbai</p>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Rev. Dr. Charles Lasrado S.J.</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
                     </div>
 
-                    <!-- Member -->
+                    <!-- Member 8 -->
                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
-                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue">
-                             <i class="fas fa-user text-3xl text-gray-300"></i>
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/8 Fr. Dr. Jestin K Kuriakose,.jpg" alt="Member" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Rev. Dr. Praveen Martis SJ</h4>
-                         <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Principal</p>
-                        <p class="text-sm text-gray-600 mt-2">St. Aloysius College, Mangalore</p>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Fr. Dr. Jestin K Kuriakose</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
                     </div>
 
-                    <!-- Member -->
+                    <!-- Member 9 -->
                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
-                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue">
-                             <i class="fas fa-user text-3xl text-gray-300"></i>
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/9 Dr. Letha P Cheriyan,.jpg" alt="Member" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Letha P Cheriyan</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
+                    </div>
+
+                    <!-- Member 10 -->
+                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/10 Rev. Dr A. Louis Arockiaraj SJ,.jpeg" alt="Member" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Rev. Dr. A. Louis Arockiaraj S.J.</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
+                    </div>
+
+                    <!-- Member 11 -->
+                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/11 Dr Regina.jpg" alt="Member" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Regina</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
+                    </div>
+
+                    <!-- Member 12 -->
+                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/12 Dr. Madhumanjari Mandal.jpg" alt="Member" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Madhumanjari Mandal</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
+                         <p class="text-sm text-gray-600 mt-2">Scottish Church College, Kolkata</p>
+                    </div>
+
+                     <!-- Member 13 -->
+                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/13 Dr. Fr. Jesu Ben Anton Rose,.jpg" alt="Member" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Fr. Jesu Ben Anton Rose</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
+                    </div>
+
+                    <!-- Member 14 -->
+                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/14 Prof. Shailendra Pratap Singh.jpeg" alt="Member" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Prof. Shailendra Pratap Singh</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
+                    </div>
+
+                    <!-- Member 15 -->
+                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/15 Fr Marriodoss.jpg" alt="Member" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Fr. Marriodoss</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
+                    </div>
+
+                    <!-- Member 16 -->
+                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/16 Dr Rudolf Manih.jpg" alt="Member" class="w-full h-full object-cover">
                         </div>
                         <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Rudolf Manih</h4>
-                         <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Principal</p>
-                        <p class="text-sm text-gray-600 mt-2">Union Christian College, Meghalaya</p>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
+                         <p class="text-sm text-gray-600 mt-2">Union Christian College, Meghalaya</p>
                     </div>
 
-                    <!-- Member -->
+                    <!-- Member 17 -->
                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
-                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue">
-                             <i class="fas fa-user text-3xl text-gray-300"></i>
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue overflow-hidden">
+                             <img src="portfolio/17 Fr Sebastian.jpg" alt="Member" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. Sujo Mary Varghese</h4>
-                         <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Principal</p>
-                        <p class="text-sm text-gray-600 mt-2">Mar Thoma College, Kerala</p>
-                    </div>
-
-                    <!-- Member -->
-                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
-                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue">
-                             <i class="fas fa-user text-3xl text-gray-300"></i>
-                        </div>
-                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Dr. P. Nithila Devakarunyam</h4>
-                         <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Principal</p>
-                        <p class="text-sm text-gray-600 mt-2">St. Christopher's College, Chennai</p>
-                    </div>
-
-                     <!-- Member -->
-                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-white hover:shadow-lg transition border border-gray-100 text-center group">
-                        <div class="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition border-2 border-transparent group-hover:border-brand-blue">
-                             <i class="fas fa-user text-3xl text-gray-300"></i>
-                        </div>
-                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Prof. John Varghese</h4>
-                         <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Principal</p>
-                        <p class="text-sm text-gray-600 mt-2">St. Stephen's College, Delhi</p>
+                        <h4 class="font-bold text-gray-800 mb-1 text-lg">Fr. Sebastian</h4>
+                        <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Executive Member</p>
+                         <p class="text-sm text-gray-600 mt-2">Don Bosco College, Manipur</p>
                     </div>
 
                 </div>

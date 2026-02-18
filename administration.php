@@ -110,19 +110,19 @@
                 
                 <!-- VP 1 -->
                 <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition flex flex-col items-center text-center group">
-                    <div class="w-32 h-32 rounded-full bg-blue-50 mb-6 flex items-center justify-center text-brand-blue text-4xl group-hover:bg-brand-blue group-hover:text-white transition duration-300">
-                        <i class="fas fa-user"></i>
+                    <div class="w-32 h-32 rounded-full bg-blue-50 mb-6 flex items-center justify-center text-brand-blue text-4xl group-hover:bg-brand-blue group-hover:text-white transition duration-300 overflow-hidden">
+                        <img src="portfolio/3 Dr Paul Wilson vice president.png" alt="Dr. Paul Wilson" class="w-full h-full object-cover">
                     </div>
-                    <h4 class="font-bold text-lg text-gray-800">Rev. Dr. Arockiasamy Xavier SJ</h4>
+                    <h4 class="font-bold text-lg text-gray-800">Dr. Paul Wilson</h4>
                     <span class="text-xs font-bold text-brand-blue uppercase tracking-wide my-2">Vice President</span>
-                    <p class="text-sm text-gray-500">Principal, St. Joseph's College, Tiruchirappalli</p>
+                    <p class="text-sm text-gray-500">Principal, Madras Christian College, Chennai</p>
                 </div>
 
                 <!-- Gen Sec -->
                 <div class="bg-brand-blue rounded-xl p-6 shadow-lg border border-brand-blue transform md:-translate-y-4 flex flex-col items-center text-center relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-16 -mt-16"></div>
-                    <div class="w-32 h-32 rounded-full bg-white/10 mb-6 flex items-center justify-center text-white text-4xl border-2 border-white/20">
-                        <i class="fas fa-user-tie"></i>
+                    <div class="w-32 h-32 rounded-full bg-white/10 mb-6 flex items-center justify-center text-white text-4xl border-2 border-white/20 overflow-hidden">
+                         <img src="portfolio/1 Rev Dr Xavier Vedam SJ.png" alt="Rev. Dr. Xavier Vedam S.J." class="w-full h-full object-cover">
                     </div>
                     <h4 class="font-bold text-xl text-white">Rev. Dr. Xavier Vedam S.J.</h4>
                     <span class="text-xs font-bold text-brand-gold uppercase tracking-wide my-2">General Secretary</span>
@@ -134,18 +134,18 @@
 
                 <!-- VP 2 -->
                 <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition flex flex-col items-center text-center group">
-                    <div class="w-32 h-32 rounded-full bg-blue-50 mb-6 flex items-center justify-center text-brand-blue text-4xl group-hover:bg-brand-blue group-hover:text-white transition duration-300">
-                        <i class="fas fa-user"></i>
+                    <div class="w-32 h-32 rounded-full bg-blue-50 mb-6 flex items-center justify-center text-brand-blue text-4xl group-hover:bg-brand-blue group-hover:text-white transition duration-300 overflow-hidden">
+                        <img src="portfolio/4 Dr. Sr. A. Nirmala vice president.jpg" alt="Dr. Sr. A. Nirmala" class="w-full h-full object-cover">
                     </div>
-                    <h4 class="font-bold text-lg text-gray-800">Dr. Madhumanjari Mandal</h4>
+                    <h4 class="font-bold text-lg text-gray-800">Dr. Sr. A. Nirmala</h4>
                     <span class="text-xs font-bold text-brand-blue uppercase tracking-wide my-2">Vice President</span>
-                    <p class="text-sm text-gray-500">Principal, Scottish Church College, Kolkata</p>
+                    <!-- <p class="text-sm text-gray-500">Principal, ...</p> -->
                 </div>
 
-                <!-- Treasurer (Centered in wide view or just flow) -->
+                <!-- Treasurer -->
                 <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition flex flex-col items-center text-center group md:col-start-1 md:col-end-3 lg:col-start-2 lg:col-end-auto">
-                    <div class="w-32 h-32 rounded-full bg-amber-50 mb-6 flex items-center justify-center text-brand-gold text-4xl group-hover:bg-brand-gold group-hover:text-white transition duration-300">
-                        <i class="fas fa-coins"></i>
+                    <div class="w-32 h-32 rounded-full bg-amber-50 mb-6 flex items-center justify-center text-brand-gold text-4xl group-hover:bg-brand-gold group-hover:text-white transition duration-300 overflow-hidden">
+                        <img src="portfolio/5 Dr. Chinkhanlun Guite.png" alt="Dr. Chinkhanlun Guite" class="w-full h-full object-cover">
                     </div>
                     <h4 class="font-bold text-lg text-gray-800">Dr. Chinkhanlun Guite</h4>
                     <span class="text-xs font-bold text-gray-500 uppercase tracking-wide my-2">Treasurer</span>
