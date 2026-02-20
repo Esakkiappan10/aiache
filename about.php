@@ -325,6 +325,308 @@
         </div>
     </section>
 
+    <!-- AIACHE Leadership Section -->
+    <section class="py-20 bg-white relative border-t border-gray-100">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-16">
+                <span class="bg-brand-blue/10 text-brand-blue px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 inline-block">Leadership</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-6">Our Office Bearers</h2>
+                <div class="w-20 h-1 bg-brand-gold mx-auto rounded-full"></div>
+            </div>
+
+            <!-- General Secretary & President (Top Tier) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
+                <!-- General Secretary -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-brand-blue flex flex-col items-center text-center transform hover:-translate-y-1 transition duration-300 group relative overflow-hidden">
+                     <div class="absolute top-0 right-0 w-32 h-32 bg-brand-blue/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:bg-brand-blue/10 transition"></div>
+                    <div class="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-3xl mb-6 group-hover:scale-110 transition shadow-sm border-4 border-white">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-gray-900">Rev. Dr. Xavier Vedam SJ</h3>
+                    <span class="text-brand-gold font-bold text-sm uppercase tracking-wider mt-2 mb-4">General Secretary</span>
+                    <div class="text-gray-600 text-sm space-y-1 bg-gray-50/50 p-4 rounded-xl w-full">
+                        <p class="font-bold text-brand-blue">AIACHE</p>
+                        <p>39 Institutional Area, D-Block, Janakpuri</p>
+                        <p>New Delhi – 110 058</p>
+                        <div class="pt-3 flex flex-col gap-1 text-gray-500 text-xs border-t border-gray-200 mt-2">
+                             <a href="tel:9444761101" class="hover:text-brand-blue transition"><i class="fas fa-phone mr-1"></i> 94447 61101, 97870 01209</a>
+                             <a href="mailto:aiache2011@gmail.com" class="hover:text-brand-blue transition"><i class="fas fa-envelope mr-1"></i> aiache2011@gmail.com</a>
+                             <a href="mailto:vedamvx@gmail.com" class="hover:text-brand-blue transition"><i class="fas fa-envelope mr-1"></i> vedamvx@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- President -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-brand-gold flex flex-col items-center text-center transform hover:-translate-y-1 transition duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-2xl -mr-16 -mt-16 group-hover:bg-brand-gold/10 transition"></div>
+                    <div class="w-24 h-24 bg-amber-50 rounded-full flex items-center justify-center text-brand-gold text-3xl mb-6 group-hover:scale-110 transition shadow-sm border-4 border-white">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-gray-900">Dr. Sr. M. Rashmi A.C.</h3>
+                    <span class="text-brand-blue font-bold text-sm uppercase tracking-wider mt-2 mb-4">President</span>
+                    <div class="text-gray-600 text-sm space-y-1 bg-gray-50/50 p-4 rounded-xl w-full">
+                        <p class="font-bold text-brand-blue">Principal</p>
+                        <p>Patna Women's College (Autonomous)</p>
+                        <p>Bailey Road, Patna – 800001, Bihar</p>
+                        <div class="pt-3 flex flex-col gap-1 text-gray-500 text-xs border-t border-gray-200 mt-2">
+                             <a href="tel:9473027965" class="hover:text-brand-blue transition"><i class="fas fa-phone mr-1"></i> 94730 27965</a>
+                             <a href="mailto:principalpwc@patnawomenscollege.in" class="hover:text-brand-blue transition"><i class="fas fa-envelope mr-1"></i> principalpwc@patnawomenscollege.in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vice Presidents & Treasurer -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                <!-- Vice President 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition group">
+                     <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-lg mb-4 group-hover:bg-brand-blue group-hover:text-white transition">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg">Rev. Dr. Praveen Martis SJ</h4>
+                    <span class="text-xs font-bold text-brand-blue uppercase tracking-wide mb-3">Vice President</span>
+                    <div class="text-sm text-gray-600 space-y-1 w-full border-t border-gray-50 pt-3 mt-1">
+                        <p class="font-medium text-gray-700">Principal</p>
+                        <p>St Aloysius College (Autonomous), Mangalore</p>
+                         <div class="text-xs text-gray-400 mt-2 flex flex-col gap-1 items-center">
+                            <span><i class="fas fa-phone mr-1"></i> 99014 83231</span>
+                            <span>aloysius.principal@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vice President 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-lg mb-4 group-hover:bg-brand-blue group-hover:text-white transition">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg">Dr. Paul Wilson</h4>
+                    <span class="text-xs font-bold text-brand-blue uppercase tracking-wide mb-3">Vice President</span>
+                    <div class="text-sm text-gray-600 space-y-1 w-full border-t border-gray-50 pt-3 mt-1">
+                        <p class="font-medium text-gray-700">Principal</p>
+                        <p>Madras Christian College, Chennai</p>
+                         <div class="text-xs text-gray-400 mt-2 flex flex-col gap-1 items-center">
+                            <span><i class="fas fa-phone mr-1"></i> 98414 26693</span>
+                            <span>wilson@mcc.edu.in</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Treasurer -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition group">
+                    <div class="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center text-brand-gold text-lg mb-4 group-hover:bg-brand-gold group-hover:text-white transition">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg">Dr. Chinkhanlun Guite</h4>
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-wide mb-3">Treasurer</span>
+                    <div class="text-sm text-gray-600 space-y-1 w-full border-t border-gray-50 pt-3 mt-1">
+                        <p class="font-medium text-gray-700">Bursar</p>
+                        <p>St. Stephen’s College, Delhi</p>
+                         <div class="text-xs text-gray-400 mt-2 flex flex-col gap-1 items-center">
+                            <span><i class="fas fa-phone mr-1"></i> 97177 33405</span>
+                            <span>bursar@ststephens.edu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regional Members Section -->
+             <div class="text-center mb-12 relative z-10">
+                 <span class="bg-gray-100 text-gray-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 inline-block">Representatives</span>
+                 <h2 class="text-2xl md:text-4xl font-serif font-bold text-gray-900 mb-6">Regional Members</h2>
+                 <div class="w-16 h-1 bg-brand-blue/20 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+                
+                <!-- Andhra Region -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4 opacity-50"></div>
+                    <h4 class="font-bold text-brand-blue text-lg mb-4 flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-gold"></i> Andhra Region</h4>
+                    <div class="space-y-4 relative z-10">
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Dr. Sr. Shiny K.P.</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">JMJ College for Women (Autonomous), Tenali</p>
+                            <div class="text-xs text-gray-500 mt-3 pt-3 border-t border-gray-200">
+                                <p class="mb-1"><i class="fas fa-phone text-gray-300 w-4"></i> 94416 13054</p>
+                                <p><i class="fas fa-envelope text-gray-300 w-4"></i> jmjtenali@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Karnataka Region -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition group relative overflow-hidden">
+                     <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4 opacity-50"></div>
+                     <h4 class="font-bold text-brand-blue text-lg mb-4 flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-gold"></i> Karnataka Region</h4>
+                    <div class="space-y-4 relative z-10">
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Rev. Dr. Charles Lasrado SJ</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">St. Joseph’s College of Commerce (Autonomous), Bengaluru</p>
+                             <div class="text-xs text-gray-500 mt-3 pt-3 border-t border-gray-200">
+                                <p class="mb-1"><i class="fas fa-phone text-gray-300 w-4"></i> 94480 55264</p>
+                                <p><i class="fas fa-envelope text-gray-300 w-4"></i> principal@sjcc.edu.in</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Kerala Region -->
+                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition group relative overflow-hidden">
+                     <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4 opacity-50"></div>
+                     <h4 class="font-bold text-brand-blue text-lg mb-4 flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-gold"></i> Kerala Region</h4>
+                    <div class="space-y-4 relative z-10">
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Fr. Dr. Jestin K Kuriakose</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">Nirmala College Muvattupuza (Autonomous)</p>
+                            <div class="text-xs text-gray-500 mt-2">
+                                <p><i class="fas fa-phone text-gray-300 w-4"></i> 94462 76764</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Dr. Letha P Cheriyan</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">Mar Thoma College for Women, Perumbavoor</p>
+                             <div class="text-xs text-gray-500 mt-2">
+                                <p><i class="fas fa-phone text-gray-300 w-4"></i> 94974 87331</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tamil Nadu Region -->
+                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition group relative overflow-hidden">
+                     <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4 opacity-50"></div>
+                     <h4 class="font-bold text-brand-blue text-lg mb-4 flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-gold"></i> Tamil Nadu Region</h4>
+                    <div class="space-y-4 relative z-10">
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Rev. Dr. A. Louis Arockiaraj SJ</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">Loyola College, Chennai</p>
+                            <div class="text-xs text-gray-500 mt-2">
+                                <p><i class="fas fa-envelope text-gray-300 w-4"></i> principal@loyolacollege.edu</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Dr. V. Regina</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">Bishop Newbegin College of Education</p>
+                             <div class="text-xs text-gray-500 mt-2">
+                                <p><i class="fas fa-phone text-gray-300 w-4"></i> 87544 82049</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eastern Region -->
+                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition group relative overflow-hidden">
+                     <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4 opacity-50"></div>
+                     <h4 class="font-bold text-brand-blue text-lg mb-4 flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-gold"></i> Eastern Region</h4>
+                    <div class="space-y-4 relative z-10">
+                         <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Dr. Madhumanjari Mandal</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">Scottish Church College, Kolkata</p>
+                             <div class="text-xs text-gray-500 mt-2">
+                                <p><i class="fas fa-phone text-gray-300 w-4"></i> 98300 75960</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Dr. Sr. A. Nirmala</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">Loreto College, Kolkata</p>
+                             <div class="text-xs text-gray-500 mt-2">
+                                <p><i class="fas fa-phone text-gray-300 w-4"></i> 6291 230 514</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Northern Region -->
+                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition group relative overflow-hidden">
+                     <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4 opacity-50"></div>
+                     <h4 class="font-bold text-brand-blue text-lg mb-4 flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-gold"></i> Northern Region</h4>
+                    <div class="space-y-4 relative z-10">
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Dr. Fr. Jesu Ben Anton Rose</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">St. Aloysius College (Autonomous), Jabalpur</p>
+                            <div class="text-xs text-gray-500 mt-2">
+                                <p><i class="fas fa-envelope text-gray-300 w-4"></i> staloysiuscollege1951@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-xl">
+                            <p class="font-bold text-gray-900">Prof. Shailendra Pratap Singh</p>
+                            <p class="text-xs uppercase font-bold text-gray-400 mb-1">Principal</p>
+                            <p class="text-sm text-gray-600 italic">St. John's College, Agra</p>
+                             <div class="text-xs text-gray-500 mt-2">
+                                <p><i class="fas fa-phone text-gray-300 w-4"></i> 99977 68866</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Co-opted Members -->
+            <div class="bg-brand-light rounded-3xl p-8 md:p-12 border border-brand-blue/5">
+                <div class="text-center mb-10">
+                    <span class="bg-white border border-gray-100 text-gray-500 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 inline-block shadow-sm">Advisors</span>
+                    <h3 class="text-2xl md:text-3xl font-serif font-bold text-gray-900">Co-Opted Members</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Co-opted 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition text-center border border-transparent hover:border-brand-blue/10">
+                        <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 text-xl mb-4 mx-auto">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-lg">Fr. Mariadoss SJ</h4>
+                        <p class="text-sm text-gray-500 uppercase font-bold mb-2">Principal</p>
+                        <p class="text-sm text-gray-600">St. Joseph’s College, Tiruchirappali</p>
+                        <div class="text-xs text-gray-400 mt-4 space-y-1">
+                            <p>94433 43324</p>
+                            <p>sjcprincipal.trichy@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Co-opted 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition text-center border border-transparent hover:border-brand-blue/10">
+                        <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 text-xl mb-4 mx-auto">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-lg">Dr. Rudolf Manih</h4>
+                        <p class="text-sm text-gray-500 uppercase font-bold mb-2">Principal</p>
+                        <p class="text-sm text-gray-600">Union Christian College, Barapani, Mehghalaya</p>
+                        <div class="text-xs text-gray-400 mt-4 space-y-1">
+                            <p>94361 08697</p>
+                            <p>manih11@yahoo.co.in</p>
+                        </div>
+                    </div>
+
+                    <!-- Co-opted 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition text-center border border-transparent hover:border-brand-blue/10">
+                        <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 text-xl mb-4 mx-auto">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-lg">Rev. Dr. Sebastian Karottupuram</h4>
+                        <p class="text-sm text-gray-500 uppercase font-bold mb-2">Principal</p>
+                        <p class="text-sm text-gray-600">Don Bosco College Maram, Manipur - 795 015</p>
+                        <div class="text-xs text-gray-400 mt-4 space-y-1">
+                            <p>94360 31127</p>
+                            <p>dbcmaram@gmail.com</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Education Module -->
     <section class="py-16 bg-brand-light">
         <div class="container mx-auto px-4 md:px-8">

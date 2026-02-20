@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -24,7 +24,7 @@
                     colors: {
                         brand: { blue: '#1e3a8a', dark: '#0f172a', light: '#f8fafc', gold: '#d97706', teal: '#0f766e' }
                     },
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
                     backgroundImage: {
                         'hero-pattern': "linear-gradient(to right bottom, rgba(30, 58, 138, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
                     }
@@ -66,24 +66,31 @@
         id="navbar">
         <div class="container mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3 group">
-                <div
-                    class="w-12 h-12 bg-brand-blue rounded-xl flex items-center justify-center text-white font-serif font-bold text-2xl shadow-lg group-hover:bg-brand-gold transition-colors duration-300">
-                    A</div>
+                <!-- Logo Image -->
+                <div class="w-12 h-12 flex items-center justify-center">
+                    <img src="images/aiache_logo.png" alt="AIACHE Logo"
+                        class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105">
+                </div>
+
+                <!-- Text -->
                 <div class="flex flex-col">
                     <h1
-                        class="text-2xl font-serif font-bold text-brand-blue leading-none tracking-tight group-hover:text-brand-dark transition-colors">
-                        AIACHE</h1>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500 font-medium">Est. 1967 • New Delhi</p>
+                        class="text-4xl font-serif font-extrabold text-brand-blue leading-none tracking-wide group-hover:text-brand-dark transition-colors">
+                        AIACHE
+                    </h1>
+                    <p class="text-[10px] uppercase tracking-widest text-gray-500 font-medium">
+                        Est. 1967 • New Delhi
+                    </p>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center space-x-8 font-medium text-sm text-gray-600">
+            <div class="hidden lg:flex items-center space-x-8 font-semibold text-sm text-gray-600">
                 <a href="index.html" class="text-brand-blue font-bold">Home</a>
                 <a href="about.php" class="hover:text-brand-blue transition">About Us</a>
 
                 <!-- Dropdown -->
                 <div class="relative group">
-                    <button class="flex items-center gap-1 hover:text-brand-blue transition font-medium">
+                    <button class="flex items-center gap-1 hover:text-brand-blue transition font-semibold">
                         Our Team <i class="fas fa-chevron-down text-xs ml-1"></i>
                     </button>
                     <div
@@ -109,7 +116,7 @@
                 <a href="gallery.php" class="hover:text-brand-blue transition">Gallery</a>
                 <!-- Downloads Dropdown -->
                 <div class="relative group">
-                    <button class="flex items-center gap-1 hover:text-brand-blue transition font-medium">
+                    <button class="flex items-center gap-1 hover:text-brand-blue transition font-semibold">
                         Downloads <i class="fas fa-chevron-down text-xs ml-1"></i>
                     </button>
                     <div
@@ -197,7 +204,8 @@
                     class="inline-block bg-brand-gold/20 backdrop-blur-sm border border-brand-gold/30 text-brand-gold px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
                     <i class="fas fa-star mr-1"></i> Est. 1967
                 </div>
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight text-shadow">
+                <h1
+                    class="text-4xl md:text-6xl lg:text-7xl font-serif font-extrabold tracking-tight leading-tight text-shadow">
                     For Character, Values & <br />
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-amber-500">Altruistic
                         Service</span>
@@ -235,7 +243,8 @@
                 </div>
                 <div class="w-full lg:w-1/2 space-y-6" data-aos="fade-left">
                     <span class="text-brand-gold font-bold tracking-widest uppercase text-xs">About AIACHE</span>
-                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-blue leading-tight">
+                    <h2
+                        class="text-3xl md:text-5xl font-serif font-extrabold tracking-tight text-brand-blue leading-tight">
                         Transforming Society Through <span class="text-brand-gold">Education</span>
                     </h2>
                     <p class="text-gray-600 leading-relaxed text-justify">
@@ -274,65 +283,105 @@
         <div class="container mx-auto px-4 md:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
                 <span class="text-brand-gold font-bold tracking-widest uppercase text-xs">Our Core Values</span>
-                <h2 class="text-3xl md:text-5xl font-serif font-bold mt-3">Guiding Principles</h2>
+                <h2 class="text-3xl md:text-5xl font-serif font-extrabold tracking-tight mt-3">Guiding Principles</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Vision Card -->
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition duration-300 md:col-span-2 group"
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition duration-300 group h-full"
                     data-aos="fade-up">
-                    <div class="flex items-start gap-6">
+
+                    <!-- Header -->
+                    <div class="flex items-center gap-4 mb-6">
                         <div
-                            class="w-16 h-16 bg-brand-gold/20 rounded-xl flex items-center justify-center text-brand-gold text-3xl shrink-0 group-hover:scale-110 transition-transform">
+                            class="w-14 h-14 bg-brand-gold/20 rounded-xl flex items-center justify-center text-brand-gold text-2xl shrink-0 group-hover:scale-110 transition-transform">
                             <i class="fas fa-eye"></i>
                         </div>
-                        <div>
-                            <h3 class="text-2xl font-serif font-bold text-brand-gold mb-4">Vision</h3>
-                            <p class="text-gray-300 leading-relaxed text-justify">
-                                The Christian service of education as a process of information for the formation and
-                                transformation, inspired by a vision of human kind and the rest of the creation and its
-                                destiny drawn from the life and salvific mission of Jesus Christ. The vision gives
-                                Christian institutions a recognizable character and sets before their managements,
-                                staff, students, parents and the community, high ideals of life and service which will
-                                inspire them continuously to strive to meet emerging needs and challenges.
-                            </p>
-                            <p class="text-gray-300 leading-relaxed text-justify mt-4">
-                                Moved by this vision, the Christian Churches in India have been active in the field of
-                                education, serving the nation in the context of its plurality of religions and diversity
-                                of cultures and languages. The Christian colleges aim at an integral and personalized
-                                education of the youth. They strive to produce intellectually competent, morally
-                                upright, socially committed, spiritually inspired citizens in the service of India and
-                                the world of today and tomorrow.
-                            </p>
-                        </div>
+                        <h3 class="text-2xl font-serif font-bold tracking-wide text-brand-gold">Our Vision</h3>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="space-y-4 text-gray-300 text-sm leading-relaxed text-justify">
+                        <p>
+                            The Christian service of education is a process of information, formation, and
+                            transformation, inspired by the life and salvific mission of Jesus Christ. This vision gives
+                            Christian institutions a recognizable character and sets high ideals of life and service.
+                        </p>
+                        <p>
+                            Moved by this vision, Christian colleges strive to produce intellectually competent, morally
+                            upright, socially committed, and spiritually inspired citizens in the service of India and
+                            the world.
+                        </p>
                     </div>
                 </div>
 
                 <!-- Mission Card -->
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition duration-300 group"
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition duration-300 group h-full"
                     data-aos="fade-up" data-aos-delay="100">
-                    <div
-                        class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-bullseye"></i>
+
+                    <!-- Header -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-14 h-14 bg-brand-blue/20 rounded-xl flex items-center justify-center text-blue-400 text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold tracking-wide text-blue-400">Our Mission</h3>
                     </div>
-                    <h3 class="text-xl font-serif font-bold text-white mb-3">Mission</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        To serve as a catalyst for excellence in higher education, fostering a holistic environment
-                        where students are empowered to become leaders of character and competence.
+
+                    <!-- Content -->
+                    <div class="space-y-4 text-gray-300 text-sm leading-relaxed text-justify">
+                        <p>
+                            AIACHE aims at the renewal and growth of member colleges and the promotion of quality,
+                            value-orientation, and social relevance in higher education. We work for Justice, Peace, and
+                            Sustainable Development.
+                        </p>
+                        <p>
+                            A priority for AIACHE is collaborative effort, working with Governmental and Ecumenical
+                            agencies, people of other faiths, and like-minded groups with shared values and concerns.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Purpose Card -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition duration-300 group h-full"
+                    data-aos="fade-up" data-aos-delay="200">
+
+                    <!-- Header -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-14 h-14 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400 text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold tracking-wide text-teal-400">Our Purpose</h3>
+                    </div>
+
+                    <!-- Content -->
+                    <p class="text-gray-300 text-sm leading-relaxed text-justify">
+                        The purpose of AIACHE is to work for the constant development of educational standards such as
+                        knowledge, character formation, and leadership. We strive to create a just and humane society in
+                        the light of Christian Faith, Gospel Values, Excellence, and Service.
                     </p>
                 </div>
 
-                <!-- Purpose & Aim Card -->
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition duration-300 group"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <div
-                        class="w-14 h-14 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-crosshairs"></i>
+                <!-- Aim Card -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition duration-300 group h-full"
+                    data-aos="fade-up" data-aos-delay="300">
+
+                    <!-- Header -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <div
+                            class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold tracking-wide text-purple-400">Our Aim</h3>
                     </div>
-                    <h3 class="text-xl font-serif font-bold text-white mb-3">Purpose & Aim</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        To promote co-operation and coordination among Christian colleges for the advancement of higher
-                        education and to serve the nation through character building and social transformation.
+
+                    <!-- Content -->
+                    <p class="text-gray-300 text-sm leading-relaxed text-justify">
+                        The aim of AIACHE is to bring together all Christian Higher Educational Institutions in India
+                        under one ecumenical umbrella. We encourage and support Christian minority institutions in their
+                        growth while upholding Constitutional values of Justice, Liberty, Equality, and Fraternity, and
+                        protecting Minority Rights.
                     </p>
                 </div>
             </div>
@@ -344,7 +393,8 @@
         <div class="container mx-auto px-4 md:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
                 <span class="text-brand-gold font-bold tracking-widest uppercase text-xs">Our Legacy</span>
-                <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-blue mt-3">Founders & Specialists</h2>
+                <h2 class="text-3xl md:text-5xl font-serif font-extrabold tracking-tight text-brand-blue mt-3">Founders
+                    & Specialists</h2>
                 <p class="text-gray-500 mt-4">The visionaries who laid the foundation for excellence.</p>
             </div>
 
@@ -416,15 +466,30 @@
     <!-- Youtube Section -->
     <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-serif font-bold text-brand-blue mb-8">AIACHE Channel</h2>
+
+            <h2 class="text-3xl font-serif font-extrabold tracking-tight text-brand-blue mb-8">
+                AIACHE Channel
+            </h2>
+
+            <!-- Video Card -->
             <div class="max-w-4xl mx-auto bg-black rounded-2xl overflow-hidden shadow-2xl aspect-video relative flex items-center justify-center group cursor-pointer"
-                onclick="window.open('#', '_blank')">
-                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                    class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition">
+                onclick="window.open('https://youtu.be/2uRO1Ti3xVY', '_blank')">
+
+                <!-- Background thumbnail -->
+                <img src="https://img.youtube.com/vi/2uRO1Ti3xVY/maxresdefault.jpg" alt="AIACHE YouTube Video"
+                    class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition duration-300">
+
+                <!-- YouTube Icon -->
                 <i
-                    class="fab fa-youtube text-7xl text-red-600 z-10 drop-shadow-lg group-hover:scale-110 transition-transform"></i>
-                <p class="absolute bottom-8 text-white font-bold text-lg tracking-wide">Watch Our Highlights</p>
+                    class="fab fa-youtube text-7xl text-red-600 z-10 drop-shadow-lg group-hover:scale-110 transition-transform duration-300"></i>
+
+                <!-- Text -->
+                <p class="absolute bottom-8 text-white font-bold text-lg tracking-wide">
+                    Watch Our Highlights
+                </p>
+
             </div>
+
         </div>
     </section>
 
@@ -436,7 +501,8 @@
 
         <div class="container mx-auto px-4 md:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-serif font-bold text-white">Get In Touch With Us</h2>
+                <h2 class="text-3xl md:text-5xl font-serif font-extrabold tracking-tight text-white">Get In Touch With
+                    Us</h2>
                 <p class="text-blue-200 mt-4 max-w-2xl mx-auto">We are here to answer any questions you may have about
                     our association.</p>
             </div>
@@ -476,24 +542,23 @@
 
                     <div class="pt-6 border-t border-white/10">
                         <h4 class="font-bold text-lg text-white mb-4">Newsletter</h4>
-                        <div class="flex gap-2">
-                            <input type="email" placeholder="Email Address"
+                        <form
+                            onsubmit="event.preventDefault(); window.location.href='mailto:aiache2011@gmail.com?subject=Newsletter Subscription&body=Please subscribe me: ' + this.elements.email.value;"
+                            class="flex gap-2">
+                            <input type="email" name="email" placeholder="Email Address" required
                                 class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-gold text-white placeholder-gray-400">
-                            <button
+                            <button type="submit"
                                 class="bg-brand-gold hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-bold transition">Submit</button>
-                        </div>
-                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-400">
-                            <input type="checkbox" id="terms" class="rounded text-brand-gold focus:ring-0">
-                            <label for="terms">I agree to the Terms of Use and Privacy Policy.</label>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
                 <!-- Google Maps (Placeholder) -->
                 <div class="bg-gray-200 rounded-3xl h-[500px] overflow-hidden shadow-2xl relative">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.585573420844!2d77.09139631508216!3d28.612198982425946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d04b6b6d5113d%3A0xe5323e9f4553b679!2sAIACHE!5e0!3m2!1sen!2sin!4v1625574582654!5m2!1sen!2sin"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.6373772260204!2d77.09984937544179!3d28.610653485074018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b55f5ed4535%3A0x76a5dad57b360938!2sAll%20India%20Association%20for%20Christian%20Higher%20Education!5e0!3m2!1sen!2sin!4v1771561563137!5m2!1sen!2sin"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
             </div>
@@ -501,21 +566,44 @@
     </section>
 
     <footer class="bg-brand-dark text-white py-12 text-sm border-t border-slate-800">
-        <div class="container mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+
+        <!-- Main footer content -->
+        <div
+            class="container mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+
+            <!-- Left -->
             <div class="text-center md:text-left">
-                <h3 class="font-serif font-bold text-2xl mb-2">AIACHE</h3>
-                <p class="text-gray-400 text-xs">All India Association for Christian Higher Education</p>
+                <h3 class="font-serif font-extrabold tracking-wide text-3xl mb-4">AIACHE</h3>
+                <p class="text-gray-400 text-sm">
+                    All India Association for Christian Higher Education
+                </p>
             </div>
+
+            <!-- Center navigation -->
             <div class="flex gap-8 text-gray-400 font-medium">
-                <a href="index.html" class="hover:text-white transition">Home</a>
-                <a href="about.php" class="hover:text-white transition">About</a>
-                <a href="members.php" class="hover:text-white transition">Members</a>
-                <a href="contact.php" class="hover:text-white transition">Contact</a>
+                <a href="index.html" class="hover:text-white transition duration-300">Home</a>
+                <a href="about.php" class="hover:text-white transition duration-300">About</a>
+                <a href="members.php" class="hover:text-white transition duration-300">Members</a>
+                <a href="contact.php" class="hover:text-white transition duration-300">Contact</a>
             </div>
-            <div class="text-gray-500 text-xs">
-                &copy; 2026 AIACHE. All Rights Reserved.
+
+            <!-- Right copyright + logo stacked -->
+            <div class="flex flex-col items-center md:items-end text-gray-500 text-xs">
+
+                <p class="mb-3">
+                    &copy; 2026 AIACHE. All Rights Reserved.
+                </p>
+
+                <!-- Logo -->
+                <a href="https://frontierwox.in" target="_blank" rel="noopener noreferrer">
+                    <img src="images/new_logo.jpeg" alt="FWT Logo"
+                        class="h-12 md:h-14 opacity-90 hover:opacity-100 transition duration-300 mix-blend-screen invert">
+                </a>
+
             </div>
+
         </div>
+
     </footer>
 
     <script>
