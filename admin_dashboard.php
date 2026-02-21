@@ -59,7 +59,23 @@ $valid_regions = ['TAMILNADU', 'KERALA', 'KARNATAKA', 'ANDHRA', 'NORTHERN', 'EAS
 if (!in_array($region, $valid_regions)) { $region = 'TAMILNADU'; }
 
 $members_list = getSafeRows($conn, $region, 50); 
-$events_list = getSafeRows($conn, "collegeevents", 10);
+
+$events_query = "SELECT * FROM collegeevents WHERE event_type='Event' ORDER BY posted_date DESC, id DESC LIMIT 10";
+$news_query = "SELECT * FROM collegeevents WHERE event_type='News' ORDER BY posted_date DESC, id DESC LIMIT 10";
+
+$events_list = false;
+$news_list = false;
+
+try {
+    $check = $conn->query("SHOW TABLES LIKE 'collegeevents'");
+    if ($check && $check->num_rows > 0) {
+        $events_res = $conn->query($events_query);
+        if($events_res && $events_res->num_rows > 0) $events_list = $events_res;
+        
+        $news_res = $conn->query($news_query);
+        if($news_res && $news_res->num_rows > 0) $news_list = $news_res;
+    }
+} catch (Exception $e) {}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -325,8 +341,14 @@ $events_list = getSafeRows($conn, "collegeevents", 10);
                     </button>
                 </div>
 
+                <!-- Tabs for Events and News -->
+                <div class="flex gap-4 border-b border-gray-200 mb-6">
+                    <button id="tab-events" class="pb-3 px-2 font-bold text-brand-blue border-b-2 border-brand-blue" onclick="switchEventTab('events')">Events Management</button>
+                    <button id="tab-news" class="pb-3 px-2 font-bold text-gray-500 hover:text-gray-800 transition" onclick="switchEventTab('news')">News Updates</button>
+                </div>
+
                 <!-- Events Grid/List -->
-                <div class="grid grid-cols-1 gap-4">
+                <div id="grid-events" class="grid grid-cols-1 gap-4">
                     <?php if ($events_list): ?>
                         <?php while($row = $events_list->fetch_assoc()): ?>
                         <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition duration-300 flex flex-col md:flex-row gap-6 items-start group relative overflow-hidden">
@@ -351,14 +373,19 @@ $events_list = getSafeRows($conn, "collegeevents", 10);
                                 <div class="flex justify-between items-start mb-2">
                                     <h3 class="font-bold text-gray-800 text-lg group-hover:text-brand-blue transition truncate pr-4"><?php echo htmlspecialchars($row['event_name']); ?></h3>
                                     <div class="flex items-center gap-2">
+                                        <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-200">Event</span>
                                         <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-green-200">Published</span>
                                     </div>
                                 </div>
                                 <p class="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4"><?php echo htmlspecialchars($row['event_description']); ?></p>
                                 
                                 <div class="flex items-center gap-4 text-xs font-medium border-t border-gray-50 pt-3 mt-auto">
-                                    <button class="text-gray-500 hover:text-brand-blue flex items-center gap-1.5 transition"><i class="fas fa-pencil-alt"></i> Edit Details</button>
-                                    <button class="text-gray-500 hover:text-brand-gold flex items-center gap-1.5 transition"><i class="fas fa-image"></i> Change Image</button>
+                                    <button onclick="openEditEventModal(<?php echo htmlspecialchars(json_encode([
+                                        'id' => $row['id'],
+                                        'title' => $row['event_name'],
+                                        'description' => $row['event_description'],
+                                        'event_type' => $row['event_type'] ?? 'Event'
+                                    ])); ?>)" class="text-gray-500 hover:text-brand-blue flex items-center gap-1.5 transition"><i class="fas fa-pencil-alt"></i> Edit Details</button>
                                     <div class="flex-grow"></div>
                                     <a href="backend/delete_event.php?id=<?php echo $row['id']; ?>" class="text-red-400 hover:text-red-600 flex items-center gap-1.5 transition px-2 py-1 hover:bg-red-50 rounded-lg" onclick="return confirm('Delete this event permanently?')"><i class="fas fa-trash-alt"></i> Delete</a>
                                 </div>
@@ -371,7 +398,63 @@ $events_list = getSafeRows($conn, "collegeevents", 10);
                                 <i class="fas fa-calendar-times text-2xl"></i>
                             </div>
                             <h3 class="text-gray-600 font-bold mb-1">No Events Found</h3>
-                            <p class="text-sm">Get started by posting your first event or news update.</p>
+                            <p class="text-sm">Get started by posting your first event.</p>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <!-- News Grid/List -->
+                <div id="grid-news" class="grid grid-cols-1 gap-4 hidden">
+                    <?php if ($news_list): ?>
+                        <?php while($row = $news_list->fetch_assoc()): ?>
+                        <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition duration-300 flex flex-col md:flex-row gap-6 items-start group relative overflow-hidden">
+                             <!-- Decoration -->
+                            <div class="absolute top-0 right-0 w-24 h-24 bg-brand-gold/5 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-brand-gold/10"></div>
+
+                            <div class="h-32 w-full md:w-48 bg-gray-100 rounded-xl flex-shrink-0 overflow-hidden border border-gray-100 shadow-inner relative">
+                                <?php if(!empty($row['image_path'])): ?>
+                                    <img src="uploads/<?php echo htmlspecialchars($row['image_path']); ?>" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+                                <?php else: ?>
+                                    <div class="h-full w-full flex flex-col items-center justify-center text-gray-300 bg-gray-50">
+                                        <i class="fas fa-image text-2xl mb-1"></i>
+                                        <span class="text-[10px] uppercase font-bold tracking-wider">No Image</span>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="absolute top-2 left-2 bg-white/90 backdrop-blur text-xs font-bold px-2 py-1 rounded-lg text-gray-700 shadow-sm border border-white/50">
+                                    <?php echo isset($row['posted_date']) ? date("M d", strtotime($row['posted_date'])) : 'Draft'; ?>
+                                </div>
+                            </div>
+                            
+                            <div class="flex-1 min-w-0 z-10 w-full">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="font-bold text-gray-800 text-lg group-hover:text-brand-blue transition truncate pr-4"><?php echo htmlspecialchars($row['event_name']); ?></h3>
+                                    <div class="flex items-center gap-2">
+                                        <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-purple-200">News</span>
+                                        <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-green-200">Published</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4"><?php echo htmlspecialchars($row['event_description']); ?></p>
+                                
+                                <div class="flex items-center gap-4 text-xs font-medium border-t border-gray-50 pt-3 mt-auto">
+                                    <button onclick="openEditEventModal(<?php echo htmlspecialchars(json_encode([
+                                        'id' => $row['id'],
+                                        'title' => $row['event_name'],
+                                        'description' => $row['event_description'],
+                                        'event_type' => $row['event_type'] ?? 'News'
+                                    ])); ?>)" class="text-gray-500 hover:text-brand-blue flex items-center gap-1.5 transition"><i class="fas fa-pencil-alt"></i> Edit Details</button>
+                                    <div class="flex-grow"></div>
+                                    <a href="backend/delete_event.php?id=<?php echo $row['id']; ?>" class="text-red-400 hover:text-red-600 flex items-center gap-1.5 transition px-2 py-1 hover:bg-red-50 rounded-lg" onclick="return confirm('Delete this news update permanently?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <div class="bg-white p-12 rounded-2xl border border-dashed border-gray-300 text-center text-gray-400">
+                            <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-300">
+                                <i class="fas fa-newspaper text-2xl"></i>
+                            </div>
+                            <h3 class="text-gray-600 font-bold mb-1">No News Found</h3>
+                            <p class="text-sm">Get started by posting your first news update.</p>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -560,13 +643,22 @@ $events_list = getSafeRows($conn, "collegeevents", 10);
                 <button onclick="toggleModal('addEventModal')" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
             </div>
             <form action="backend/add_event.php" method="POST" enctype="multipart/form-data" class="p-6 space-y-4">
-                <div>
-                    <label class="text-[10px] font-bold text-gray-500 uppercase">Headline</label>
-                    <input type="text" name="title" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-brand-gold outline-none" required>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Headline</label>
+                        <input type="text" name="title" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-brand-gold outline-none" required>
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Type</label>
+                        <select name="event_type" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm outline-none bg-white">
+                            <option value="Event">Event</option>
+                            <option value="News">News</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <label class="text-[10px] font-bold text-gray-500 uppercase">Content (Full Description)</label>
-                    <textarea name="description" rows="10" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-brand-gold outline-none" placeholder="Enter full event details here..."></textarea>
+                    <textarea name="description" rows="10" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-brand-gold outline-none" placeholder="Enter full details here..."></textarea>
                 </div>
                 <div>
                     <label class="text-[10px] font-bold text-gray-500 uppercase">Featured Image</label>
@@ -575,6 +667,43 @@ $events_list = getSafeRows($conn, "collegeevents", 10);
                 <div class="pt-4 flex justify-end gap-3">
                     <button type="button" onclick="toggleModal('addEventModal')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-lg font-medium text-sm">Cancel</button>
                     <button type="submit" class="bg-brand-gold text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-amber-700 shadow-lg">Publish Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="editEventModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center backdrop-blur-sm p-4 transition-opacity opacity-0 pointer-events-none">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform">
+            <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                <h3 class="font-bold text-gray-800">Edit News / Event</h3>
+                <button onclick="toggleModal('editEventModal')" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+            </div>
+            <form action="backend/edit_event.php" method="POST" enctype="multipart/form-data" class="p-6 space-y-4">
+                <input type="hidden" name="event_id" id="edit_event_id">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Headline</label>
+                        <input type="text" name="title" id="edit_event_title" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-brand-gold outline-none" required>
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold text-gray-500 uppercase">Type</label>
+                        <select name="event_type" id="edit_event_type" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm outline-none bg-white">
+                            <option value="Event">Event</option>
+                            <option value="News">News</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold text-gray-500 uppercase">Content (Full Description)</label>
+                    <textarea name="description" id="edit_event_description" rows="10" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-brand-gold outline-none" placeholder="Enter full details here..."></textarea>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold text-gray-500 uppercase">Update Featured Image (Optional)</label>
+                    <input type="file" name="event_image" class="w-full text-xs text-gray-500 border border-gray-300 rounded-lg p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                </div>
+                <div class="pt-4 flex justify-end gap-3">
+                    <button type="button" onclick="toggleModal('editEventModal')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-lg font-medium text-sm">Cancel</button>
+                    <button type="submit" class="bg-brand-gold text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-amber-700 shadow-lg">Save Changes</button>
                 </div>
             </form>
         </div>
@@ -674,6 +803,28 @@ $events_list = getSafeRows($conn, "collegeevents", 10);
             document.getElementById('edit_original_table').value = data.table;
 
             toggleModal('editMemberModal');
+        }
+
+        function openEditEventModal(data) {
+            document.getElementById('edit_event_id').value = data.id;
+            document.getElementById('edit_event_title').value = data.title;
+            document.getElementById('edit_event_description').value = data.description;
+            document.getElementById('edit_event_type').value = data.event_type;
+            
+            toggleModal('editEventModal');
+        }
+
+        function switchEventTab(tab) {
+            const tabs = ['events', 'news'];
+            tabs.forEach(t => {
+                document.getElementById(`tab-${t}`).classList.remove('text-brand-blue', 'border-b-2', 'border-brand-blue');
+                document.getElementById(`tab-${t}`).classList.add('text-gray-500');
+                document.getElementById(`grid-${t}`).classList.add('hidden');
+            });
+
+            document.getElementById(`tab-${tab}`).classList.remove('text-gray-500');
+            document.getElementById(`tab-${tab}`).classList.add('text-brand-blue', 'border-b-2', 'border-brand-blue');
+            document.getElementById(`grid-${tab}`).classList.remove('hidden');
         }
     </script>
 
