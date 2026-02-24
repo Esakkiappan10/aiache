@@ -106,12 +106,10 @@ try {
                         <a href="former_leaders.php"
                             class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Former
                             Leaders</a>
-                        <a href="editorial_board.php"
-                            class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Editorial
-                            Board</a>
                     </div>
                 </div>
 
+                <a href="editorial_board.php" class="hover:text-brand-blue transition">Editorial Board</a>
                 <a href="members.php" class="hover:text-brand-blue transition">Members</a>
                 <a href="#" class="text-brand-blue font-bold">Events & News</a>
                 <a href="gallery.php" class="hover:text-brand-blue transition">Gallery</a>
@@ -157,8 +155,6 @@ try {
                             class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Administration</a>
                         <a href="executive_board.php"
                             class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Executive Board</a>
-                        <a href="editorial_board.php"
-                            class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Editorial Board</a>
                         <a href="founders.php"
                             class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Founders</a>
                         <a href="former_leaders.php"
@@ -166,6 +162,8 @@ try {
                     </div>
                 </div>
 
+                <a href="editorial_board.php"
+                    class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Editorial Board</a>
                 <a href="members.php"
                     class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Members</a>
                 <a href="events.php"

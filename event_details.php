@@ -32,6 +32,18 @@ $desc = nl2br(htmlspecialchars($event['event_description'])); // Preserve line b
 $date = isset($event['posted_date']) ? date("F d, Y", strtotime($event['posted_date'])) : 'Latest';
 $hasImage = !empty($event['image_path']) && file_exists("uploads/".$event['image_path']);
 $imageSrc = $hasImage ? "uploads/".htmlspecialchars($event['image_path']) : "";
+
+$additional_images = [];
+if (!empty($event['additional_images'])) {
+    $decoded = json_decode($event['additional_images'], true);
+    if (is_array($decoded)) {
+        foreach ($decoded as $img) {
+            if (file_exists("uploads/". $img)) {
+                $additional_images[] = "uploads/".htmlspecialchars($img);
+            }
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -113,12 +125,10 @@ $imageSrc = $hasImage ? "uploads/".htmlspecialchars($event['image_path']) : "";
                         <a href="former_leaders.php"
                             class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Former
                             Leaders</a>
-                        <a href="editorial_board.php"
-                            class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-blue transition text-gray-600">Editorial
-                            Board</a>
                     </div>
                 </div>
 
+                <a href="editorial_board.php" class="hover:text-brand-blue transition">Editorial Board</a>
                 <a href="members.php" class="hover:text-brand-blue transition">Members</a>
                 <a href="events.php" class="hover:text-brand-blue transition">Events & News</a>
                 <a href="gallery.php" class="hover:text-brand-blue transition">Gallery</a>
@@ -164,8 +174,6 @@ $imageSrc = $hasImage ? "uploads/".htmlspecialchars($event['image_path']) : "";
                             class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Administration</a>
                         <a href="executive_board.php"
                             class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Executive Board</a>
-                        <a href="editorial_board.php"
-                            class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Editorial Board</a>
                         <a href="founders.php"
                             class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Founders</a>
                         <a href="former_leaders.php"
@@ -173,6 +181,8 @@ $imageSrc = $hasImage ? "uploads/".htmlspecialchars($event['image_path']) : "";
                     </div>
                 </div>
 
+                <a href="editorial_board.php"
+                    class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Editorial Board</a>
                 <a href="members.php"
                     class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Members</a>
                 <a href="events.php"
@@ -233,6 +243,20 @@ $imageSrc = $hasImage ? "uploads/".htmlspecialchars($event['image_path']) : "";
                 <div class="prose prose-lg prose-blue max-w-none text-gray-600 leading-relaxed font-light">
                     <?php echo $desc; ?>
                 </div>
+
+                <!-- Event Photo Gallery -->
+                <?php if (!empty($additional_images)): ?>
+                <div class="mt-12 pt-8 border-t border-gray-100">
+                    <h3 class="text-2xl font-serif font-bold text-brand-blue mb-6">Event Gallery</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <?php foreach($additional_images as $img_src): ?>
+                        <div class="overflow-hidden rounded-xl bg-gray-100 shadow-sm aspect-video hover:shadow-lg hover:-translate-y-1 transition duration-300">
+                            <img src="<?php echo $img_src; ?>" alt="Event Photo" class="w-full h-full object-cover">
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <?php endif; ?>
 
                 <!-- Call to Action / Footer -->
                 <div class="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">

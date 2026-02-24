@@ -58,10 +58,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    // Process Multiple Additional Images (Only if main upload ok and directory exists)
+    $additional_images_arr = [];
+    if ($upload_ok && isset($_FILES["additional_images"]) && is_array($_FILES["additional_images"]["name"])) {
+        
+        $total_files = count($_FILES["additional_images"]["name"]);
+        
+        for ($i = 0; $i < $total_files; $i++) {
+            if ($_FILES["additional_images"]["error"][$i] == 0) {
+                
+                $add_ext = strtolower(pathinfo($_FILES["additional_images"]["name"][$i], PATHINFO_EXTENSION));
+                $allowed_add_ext = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                
+                if (in_array($add_ext, $allowed_add_ext)) {
+                    $new_add_filename = "add_" . time() . "_" . uniqid() . "." . $add_ext;
+                    $add_target_file = $target_dir . $new_add_filename;
+                    
+                    if (move_uploaded_file($_FILES["additional_images"]["tmp_name"][$i], $add_target_file)) {
+                        $additional_images_arr[] = $new_add_filename;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Convert array to JSON for database storage
+    $additional_images_json = !empty($additional_images_arr) ? $conn->real_escape_string(json_encode($additional_images_arr)) : 'NULL';
+
     // 4. Insert into Database (Only if no upload errors occurred)
     if ($upload_ok) {
-        $sql = "INSERT INTO collegeevents (event_name, event_description, image_path, posted_date, event_type) 
-                VALUES ('$title_input', '$desc', '$image_path', NOW(), '$event_type')";
+        $sql = "INSERT INTO collegeevents (event_name, event_description, image_path, posted_date, event_type, additional_images) 
+                VALUES ('$title_input', '$desc', '$image_path', NOW(), '$event_type', " . ($additional_images_json == 'NULL' ? "NULL" : "'$additional_images_json'") . ")";
                 
         if ($conn->query($sql) === TRUE) {
             $status = "success";

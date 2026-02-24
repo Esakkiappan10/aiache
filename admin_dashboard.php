@@ -106,13 +106,19 @@ try {
         .hover-lift:hover { transform: translateY(-2px); }
     </style>
 </head>
-<body class="bg-gray-50 font-sans antialiased flex h-screen overflow-hidden text-sm">
+<body class="bg-gray-50 font-sans antialiased flex h-screen overflow-hidden text-sm relative">
 
-    <aside class="w-64 bg-brand-dark text-white flex flex-col shadow-2xl z-20 hidden md:flex flex-shrink-0">
-        <div class="h-16 flex items-center px-6 bg-brand-blue shadow-lg">
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/60 z-30 hidden md:hidden transition-opacity duration-300 opacity-0"></div>
+
+    <aside id="admin-sidebar" class="w-64 bg-brand-dark text-white flex flex-col shadow-2xl z-40 fixed md:relative inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex-shrink-0">
+        <div class="h-16 flex items-center justify-between px-6 bg-brand-blue shadow-lg">
             <div class="font-bold text-lg tracking-wide flex items-center gap-2">
                 <i class="fas fa-shield-alt text-brand-gold"></i> AIACHE Admin
             </div>
+            <button onclick="toggleSidebar()" class="md:hidden text-white hover:text-gray-300 transition text-lg">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
         
         <nav class="flex-1 py-6 space-y-1 overflow-y-auto">
@@ -141,7 +147,7 @@ try {
     <div class="flex-1 flex flex-col h-screen overflow-hidden relative w-full">
         <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 z-10 flex-shrink-0 border-b border-gray-200">
             <div class="flex items-center gap-4">
-                <button class="md:hidden text-gray-600 text-lg"><i class="fas fa-bars"></i></button>
+                <button onclick="toggleSidebar()" class="md:hidden text-gray-600 hover:text-brand-blue transition text-lg"><i class="fas fa-bars"></i></button>
                 <h1 class="text-gray-700 font-bold text-lg hidden sm:block" id="page-title">Dashboard Overview</h1>
             </div>
             <div class="flex items-center gap-4">
@@ -380,12 +386,13 @@ try {
                                 <p class="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4"><?php echo htmlspecialchars($row['event_description']); ?></p>
                                 
                                 <div class="flex items-center gap-4 text-xs font-medium border-t border-gray-50 pt-3 mt-auto">
-                                    <button onclick="openEditEventModal(<?php echo htmlspecialchars(json_encode([
-                                        'id' => $row['id'],
-                                        'title' => $row['event_name'],
-                                        'description' => $row['event_description'],
-                                        'event_type' => $row['event_type'] ?? 'Event'
-                                    ])); ?>)" class="text-gray-500 hover:text-brand-blue flex items-center gap-1.5 transition"><i class="fas fa-pencil-alt"></i> Edit Details</button>
+                                    <button onclick='openEditEventModal(<?php echo htmlspecialchars(json_encode([
+                                        "id" => $row["id"],
+                                        "title" => $row["event_name"],
+                                        "description" => $row["event_description"],
+                                        "event_type" => $row["event_type"] ?? "Event",
+                                        "additional_images" => $row["additional_images"]
+                                    ])); ?>)' class="text-gray-500 hover:text-brand-blue flex items-center gap-1.5 transition"><i class="fas fa-pencil-alt"></i> Edit Details</button>
                                     <div class="flex-grow"></div>
                                     <a href="backend/delete_event.php?id=<?php echo $row['id']; ?>" class="text-red-400 hover:text-red-600 flex items-center gap-1.5 transition px-2 py-1 hover:bg-red-50 rounded-lg" onclick="return confirm('Delete this event permanently?')"><i class="fas fa-trash-alt"></i> Delete</a>
                                 </div>
@@ -436,12 +443,13 @@ try {
                                 <p class="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4"><?php echo htmlspecialchars($row['event_description']); ?></p>
                                 
                                 <div class="flex items-center gap-4 text-xs font-medium border-t border-gray-50 pt-3 mt-auto">
-                                    <button onclick="openEditEventModal(<?php echo htmlspecialchars(json_encode([
-                                        'id' => $row['id'],
-                                        'title' => $row['event_name'],
-                                        'description' => $row['event_description'],
-                                        'event_type' => $row['event_type'] ?? 'News'
-                                    ])); ?>)" class="text-gray-500 hover:text-brand-blue flex items-center gap-1.5 transition"><i class="fas fa-pencil-alt"></i> Edit Details</button>
+                                    <button onclick='openEditEventModal(<?php echo htmlspecialchars(json_encode([
+                                        "id" => $row["id"],
+                                        "title" => $row["event_name"],
+                                        "description" => $row["event_description"],
+                                        "event_type" => $row["event_type"] ?? "News",
+                                        "additional_images" => $row["additional_images"]
+                                    ])); ?>)' class="text-gray-500 hover:text-brand-blue flex items-center gap-1.5 transition"><i class="fas fa-pencil-alt"></i> Edit Details</button>
                                     <div class="flex-grow"></div>
                                     <a href="backend/delete_event.php?id=<?php echo $row['id']; ?>" class="text-red-400 hover:text-red-600 flex items-center gap-1.5 transition px-2 py-1 hover:bg-red-50 rounded-lg" onclick="return confirm('Delete this news update permanently?')"><i class="fas fa-trash-alt"></i> Delete</a>
                                 </div>
@@ -664,6 +672,11 @@ try {
                     <label class="text-[10px] font-bold text-gray-500 uppercase">Featured Image</label>
                     <input type="file" name="event_image" class="w-full text-xs text-gray-500 border border-gray-300 rounded-lg p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
                 </div>
+                <div>
+                    <label class="text-[10px] font-bold text-gray-500 uppercase">Additional Photos (Optional)</label>
+                    <input type="file" name="additional_images[]" multiple accept=".jpg,.jpeg,.png,.webp" class="w-full text-xs text-gray-500 border border-gray-300 rounded-lg p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100">
+                    <p class="text-[10px] text-gray-400 mt-1">You can select multiple images by holding Ctrl (Windows) or Cmd (Mac).</p>
+                </div>
                 <div class="pt-4 flex justify-end gap-3">
                     <button type="button" onclick="toggleModal('addEventModal')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-lg font-medium text-sm">Cancel</button>
                     <button type="submit" class="bg-brand-gold text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-amber-700 shadow-lg">Publish Now</button>
@@ -700,6 +713,16 @@ try {
                 <div>
                     <label class="text-[10px] font-bold text-gray-500 uppercase">Update Featured Image (Optional)</label>
                     <input type="file" name="event_image" class="w-full text-xs text-gray-500 border border-gray-300 rounded-lg p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                </div>
+                <div id="edit_existing_images_wrapper" class="hidden">
+                    <label class="text-[10px] font-bold text-gray-500 uppercase">Existing Additional Photos</label>
+                    <div id="edit_existing_images_container" class="flex flex-wrap gap-3 mt-2 mb-4"></div>
+                    <p class="text-[10px] text-gray-400 mb-2">Click the trash icon to remove an image. It will be deleted when you save changes.</p>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold text-gray-500 uppercase">Add Additional Photos (Optional)</label>
+                    <input type="file" name="additional_images[]" multiple accept=".jpg,.jpeg,.png,.webp" class="w-full text-xs text-gray-500 border border-gray-300 rounded-lg p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100">
+                    <p class="text-[10px] text-gray-400 mt-1">Uploading new photos will add them to the existing gallery.</p>
                 </div>
                 <div class="pt-4 flex justify-end gap-3">
                     <button type="button" onclick="toggleModal('editEventModal')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-lg font-medium text-sm">Cancel</button>
@@ -772,6 +795,29 @@ try {
                 }
                 window.history.pushState({}, '', url);
             }
+            
+            // Close sidebar on mobile after clicking a link
+            if (window.innerWidth < 768) {
+                const sidebar = document.getElementById('admin-sidebar');
+                if(sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                    toggleSidebar();
+                }
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('admin-sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
         }
 
         function updateMemberRegion(region) {
@@ -810,6 +856,57 @@ try {
             document.getElementById('edit_event_title').value = data.title;
             document.getElementById('edit_event_description').value = data.description;
             document.getElementById('edit_event_type').value = data.event_type;
+            
+            const wrapper = document.getElementById('edit_existing_images_wrapper');
+            const container = document.getElementById('edit_existing_images_container');
+            container.innerHTML = '';
+            
+            document.querySelectorAll('input[name="delete_additional_images[]"]').forEach(el => el.remove());
+            
+            if (data.additional_images && data.additional_images !== "null") {
+                try {
+                    let images = data.additional_images;
+                    if (typeof images === 'string') {
+                         images = JSON.parse(images);
+                    }
+                    if (Array.isArray(images) && images.length > 0) {
+                        wrapper.classList.remove('hidden');
+                        images.forEach(img => {
+                            const imgDiv = document.createElement('div');
+                            imgDiv.className = 'relative w-16 h-16 rounded-lg overflow-hidden border border-gray-200 group';
+                            
+                            const imgEl = document.createElement('img');
+                            imgEl.src = 'uploads/' + img;
+                            imgEl.className = 'w-full h-full object-cover';
+                            
+                            const delBtn = document.createElement('button');
+                            delBtn.type = 'button';
+                            delBtn.className = 'absolute inset-0 bg-red-500/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity';
+                            delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                            delBtn.title = 'Remove Photo';
+                            delBtn.onclick = function() {
+                                imgDiv.style.display = 'none';
+                                const hiddenInput = document.createElement('input');
+                                hiddenInput.type = 'hidden';
+                                hiddenInput.name = 'delete_additional_images[]';
+                                hiddenInput.value = img;
+                                document.getElementById('editEventModal').querySelector('form').appendChild(hiddenInput);
+                            };
+                            
+                            imgDiv.appendChild(imgEl);
+                            imgDiv.appendChild(delBtn);
+                            container.appendChild(imgDiv);
+                        });
+                    } else {
+                        wrapper.classList.add('hidden');
+                    }
+                } catch (e) {
+                    wrapper.classList.add('hidden');
+                    console.error('Error parsing additional images:', e);
+                }
+            } else {
+                wrapper.classList.add('hidden');
+            }
             
             toggleModal('editEventModal');
         }

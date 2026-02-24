@@ -10,12 +10,13 @@ $new_menu = '<div id="mobile-menu" class="hidden lg:hidden bg-white border-t bor
                     <div class="pl-4 border-l-2 border-gray-100 ml-4 space-y-1">
                         <a href="administration.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Administration</a>
                         <a href="executive_board.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Executive Board</a>
-                        <a href="editorial_board.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Editorial Board</a>
                         <a href="founders.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Founders</a>
                         <a href="former_leaders.php" class="block px-4 py-1.5 text-sm text-gray-600 hover:text-brand-blue">Former Leaders</a>
                     </div>
                 </div>
 
+                <a href="editorial_board.php"
+                    class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Editorial Board</a>
                 <a href="members.php" class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Members</a>
                 <a href="events.php" class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Events & News</a>
                 <a href="gallery.php" class="px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-brand-blue transition text-gray-700">Gallery</a>
