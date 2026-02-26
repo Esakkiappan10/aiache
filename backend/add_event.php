@@ -94,6 +94,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $status = "success";
             $title = "Published";
             $message = "<strong>$title_input</strong> is now live.";
+
+            // --- ADDITION FOR GALLERY SYNC ---
+            // Automatically push images to gallery database using the event name as the folder
+            if (!empty($image_path)) {
+                $conn->query("INSERT IGNORE INTO gallery_photos (folder_name, image_path) VALUES ('$title_input', '$image_path')");
+            }
+            if (!empty($additional_images_arr)) {
+                foreach($additional_images_arr as $img) {
+                    $conn->query("INSERT IGNORE INTO gallery_photos (folder_name, image_path) VALUES ('$title_input', '$img')");
+                }
+            }
+            // ---------------------------------
+
         } else {
             $status = "error";
             $title = "Database Error";

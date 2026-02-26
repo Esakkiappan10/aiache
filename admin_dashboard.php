@@ -62,9 +62,12 @@ $members_list = getSafeRows($conn, $region, 50);
 
 $events_query = "SELECT * FROM collegeevents WHERE event_type='Event' ORDER BY posted_date DESC, id DESC LIMIT 10";
 $news_query = "SELECT * FROM collegeevents WHERE event_type='News' ORDER BY posted_date DESC, id DESC LIMIT 10";
+$gallery_list = getSafeRows($conn, "gallery_photos", 50);
+$total_gallery = getSafeCount($conn, "gallery_photos");
 
 $events_list = false;
 $news_list = false;
+$unique_folders = [];
 
 try {
     $check = $conn->query("SHOW TABLES LIKE 'collegeevents'");
@@ -74,6 +77,13 @@ try {
         
         $news_res = $conn->query($news_query);
         if($news_res && $news_res->num_rows > 0) $news_list = $news_res;
+    }
+    
+    $folder_check = $conn->query("SELECT DISTINCT folder_name FROM gallery_photos ORDER BY folder_name ASC");
+    if($folder_check && $folder_check->num_rows > 0){
+        while($frow = $folder_check->fetch_assoc()){
+            $unique_folders[] = $frow['folder_name'];
+        }
     }
 } catch (Exception $e) {}
 ?>
@@ -134,6 +144,9 @@ try {
             </a>
             <a href="#" onclick="showSection('files')" class="nav-item flex items-center px-6 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition border-l-4 border-transparent hover:border-brand-gold">
                 <i class="fas fa-folder-open w-6 opacity-70"></i> <span class="font-medium">Resources</span>
+            </a>
+            <a href="#" onclick="showSection('gallery')" class="nav-item flex items-center px-6 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition border-l-4 border-transparent hover:border-brand-gold">
+                <i class="fas fa-images w-6 opacity-70"></i> <span class="font-medium">Gallery</span>
             </a>
         </nav>
 
@@ -546,6 +559,75 @@ try {
                 </div>
             </div>
 
+            <div id="section-gallery" class="admin-section hidden space-y-6">
+                <!-- Header Actions -->
+                <div class="flex justify-between items-center bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
+                    <div>
+                        <h2 class="font-bold text-gray-800 text-lg">Media Gallery</h2>
+                        <p class="text-xs text-gray-500 mt-1">Manage and organize photos across different events.</p>
+                    </div>
+                    <button onclick="toggleModal('addGalleryModal')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-6 rounded-xl text-sm flex items-center gap-2 shadow-lg hover:shadow-indigo-500/30 transition transform hover:-translate-y-0.5 active:scale-95">
+                        <i class="fas fa-cloud-upload-alt"></i> Upload Photos
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-gray-50/50 text-xs uppercase text-gray-500 font-bold border-b border-gray-100 tracking-wider">
+                                <tr>
+                                    <th class="px-6 py-4">Image</th>
+                                    <th class="px-6 py-4">Folder / Event Name</th>
+                                    <th class="px-6 py-4">Upload Date</th>
+                                    <th class="px-6 py-4 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-50 text-sm">
+                                <?php if ($gallery_list && $gallery_list->num_rows > 0): ?>
+                                    <?php while($row = $gallery_list->fetch_assoc()): ?>
+                                    <tr class="hover:bg-indigo-50/30 transition duration-200 group">
+                                        <td class="px-6 py-4">
+                                            <div class="h-16 w-24 rounded-lg bg-gray-100 overflow-hidden border border-gray-200 shadow-sm">
+                                                <img src="uploads/<?php echo htmlspecialchars($row['image_path']); ?>" alt="Gallery Image" class="h-full w-full object-cover">
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <h4 class="font-bold text-gray-800 text-sm group-hover:text-indigo-600 transition truncate max-w-xs">
+                                                <i class="fas fa-folder text-indigo-400 mr-2"></i><?php echo htmlspecialchars($row['folder_name']); ?>
+                                            </h4>
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-500 text-xs font-medium">
+                                            <?php echo !empty($row['uploaded_at']) ? date("M d, Y h:i A", strtotime($row['uploaded_at'])) : '-'; ?>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <div class="flex justify-end gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                                                <button onclick="openEditGalleryModal({
+                                                    id: '<?php echo $row['id']; ?>',
+                                                    folder: '<?php echo addslashes($row['folder_name']); ?>'
+                                                })" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-brand-blue hover:bg-blue-50 transition border border-transparent hover:border-blue-100" title="Edit Details">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <a href="backend/delete_gallery.php?id=<?php echo $row['id']; ?>" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 transition border border-transparent hover:border-red-100" onclick="return confirm('Delete this photo permanently?')" title="Delete Photo">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php endwhile; ?>
+                                <?php else: ?>
+                                    <tr><td colspan="4" class="px-6 py-16 text-center text-gray-400">
+                                        <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-300">
+                                            <i class="fas fa-images text-2xl"></i>
+                                        </div>
+                                        No photos in the gallery.
+                                    </td></tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 
@@ -644,6 +726,67 @@ try {
         </div>
     </div>
 
+    <!-- Add Gallery Modal -->
+    <div id="addGalleryModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center backdrop-blur-sm p-4 transition-opacity opacity-0 pointer-events-none">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform">
+            <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                <h3 class="font-bold text-gray-800">Upload to Gallery</h3>
+                <button onclick="toggleModal('addGalleryModal')" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+            </div>
+            <form action="backend/add_gallery.php" method="POST" enctype="multipart/form-data" class="p-6 space-y-4">
+                <div id="folder_selector_group">
+                    <label class="text-[10px] font-bold text-gray-500 uppercase">Folder / Event Name</label>
+                    
+                    <div class="flex gap-2">
+                        <select name="existing_folder" id="existing_folder" class="flex-1 bg-white border border-gray-300 rounded-lg p-2.5 text-sm focus:border-indigo-600 outline-none" onchange="toggleFolderInput()">
+                            <option value="">-- Select Existing Folder --</option>
+                            <?php foreach($unique_folders as $uf): ?>
+                                <option value="<?php echo htmlspecialchars($uf); ?>"><?php echo htmlspecialchars($uf); ?></option>
+                            <?php endforeach; ?>
+                            <option value="NEW_FOLDER" class="font-bold text-indigo-600">+ Create New Folder</option>
+                        </select>
+                    </div>
+
+                    <div id="new_folder_wrapper" class="mt-3 <?php echo empty($unique_folders) ? 'block' : 'hidden'; ?>">
+                        <input type="text" name="folder_name" id="new_folder_input" placeholder="Enter New Folder Name (e.g. AIACHE AGM 2026)" class="w-full border border-gray-300 bg-gray-50 rounded-lg p-2.5 text-sm focus:border-indigo-600 focus:bg-white outline-none" <?php echo empty($unique_folders) ? 'required' : ''; ?>>
+                    </div>
+                </div>
+
+                <script>
+                    function toggleFolderInput() {
+                        const select = document.getElementById('existing_folder');
+                        const wrapper = document.getElementById('new_folder_wrapper');
+                        const input = document.getElementById('new_folder_input');
+                        if (select.value === 'NEW_FOLDER' || select.options.length <= 1) {
+                            wrapper.classList.remove('hidden');
+                            input.setAttribute('required', 'required');
+                        } else {
+                            wrapper.classList.add('hidden');
+                            input.removeAttribute('required');
+                            input.value = ''; // clear when hiding
+                        }
+                    }
+                </script>
+                <div>
+                    <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Select Photos</label>
+                    <div class="relative w-full border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 hover:bg-gray-100 transition p-6 text-center cursor-pointer" onclick="document.getElementById('gallery_images_input').click()">
+                        <input type="file" name="gallery_images[]" id="gallery_images_input" multiple accept=".jpg,.jpeg,.png,.webp" class="hidden" onchange="previewImagesUI(this, 'gallery_preview_container', 'gallery_upload_state')" required>
+                        <div id="gallery_upload_state">
+                            <i class="fas fa-cloud-upload-alt text-3xl text-indigo-400 mb-2"></i>
+                            <p class="text-xs font-semibold text-gray-700">Click to browse multiple files</p>
+                            <p class="text-[10px] text-gray-500 mt-1">Hold Ctrl (Windows) or Cmd (Mac) to select</p>
+                        </div>
+                    </div>
+                    <div id="gallery_preview_container" class="grid grid-cols-4 sm:grid-cols-5 gap-2 mt-3 empty:hidden max-h-40 overflow-y-auto p-1"></div>
+                </div>
+                <div class="pt-4 flex justify-end gap-3">
+                    <button type="button" onclick="toggleModal('addGalleryModal')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-lg font-medium text-sm">Cancel</button>
+                    <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-indigo-700 shadow-lg">Upload Photos</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div id="addEventModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center backdrop-blur-sm p-4 transition-opacity opacity-0 pointer-events-none">
         <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform">
             <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
@@ -673,9 +816,16 @@ try {
                     <input type="file" name="event_image" class="w-full text-xs text-gray-500 border border-gray-300 rounded-lg p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
                 </div>
                 <div>
-                    <label class="text-[10px] font-bold text-gray-500 uppercase">Additional Photos (Optional)</label>
-                    <input type="file" name="additional_images[]" multiple accept=".jpg,.jpeg,.png,.webp" class="w-full text-xs text-gray-500 border border-gray-300 rounded-lg p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100">
-                    <p class="text-[10px] text-gray-400 mt-1">You can select multiple images by holding Ctrl (Windows) or Cmd (Mac).</p>
+                    <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Additional Photos (Optional)</label>
+                    <div class="relative w-full border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 hover:bg-gray-100 transition p-6 text-center cursor-pointer" onclick="document.getElementById('add_event_images_input').click()">
+                        <input type="file" name="additional_images[]" id="add_event_images_input" multiple accept=".jpg,.jpeg,.png,.webp" class="hidden" onchange="previewImagesUI(this, 'add_event_preview_container', 'add_event_upload_state')">
+                        <div id="add_event_upload_state">
+                            <i class="fas fa-images text-3xl text-teal-400 mb-2"></i>
+                            <p class="text-xs font-semibold text-gray-700">Click to browse multiple files</p>
+                            <p class="text-[10px] text-gray-500 mt-1">Hold Ctrl (Windows) or Cmd (Mac) to select</p>
+                        </div>
+                    </div>
+                    <div id="add_event_preview_container" class="grid grid-cols-4 sm:grid-cols-5 gap-2 mt-3 empty:hidden max-h-40 overflow-y-auto p-1"></div>
                 </div>
                 <div class="pt-4 flex justify-end gap-3">
                     <button type="button" onclick="toggleModal('addEventModal')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-lg font-medium text-sm">Cancel</button>
@@ -720,13 +870,42 @@ try {
                     <p class="text-[10px] text-gray-400 mb-2">Click the trash icon to remove an image. It will be deleted when you save changes.</p>
                 </div>
                 <div>
-                    <label class="text-[10px] font-bold text-gray-500 uppercase">Add Additional Photos (Optional)</label>
-                    <input type="file" name="additional_images[]" multiple accept=".jpg,.jpeg,.png,.webp" class="w-full text-xs text-gray-500 border border-gray-300 rounded-lg p-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100">
-                    <p class="text-[10px] text-gray-400 mt-1">Uploading new photos will add them to the existing gallery.</p>
+                    <label class="text-[10px] font-bold text-gray-500 uppercase block mb-1">Add Additional Photos (Optional)</label>
+                    <div class="relative w-full border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 hover:bg-gray-100 transition p-6 text-center cursor-pointer" onclick="document.getElementById('edit_event_images_input').click()">
+                        <input type="file" name="additional_images[]" id="edit_event_images_input" multiple accept=".jpg,.jpeg,.png,.webp" class="hidden" onchange="previewImagesUI(this, 'edit_event_preview_container', 'edit_event_upload_state')">
+                        <div id="edit_event_upload_state">
+                            <i class="fas fa-images text-3xl text-teal-400 mb-2"></i>
+                            <p class="text-xs font-semibold text-gray-700">Click to browse multiple files</p>
+                            <p class="text-[10px] text-gray-500 mt-1">Hold Ctrl (Windows) or Cmd (Mac) to select</p>
+                        </div>
+                    </div>
+                    <div id="edit_event_preview_container" class="grid grid-cols-4 sm:grid-cols-5 gap-2 mt-3 empty:hidden max-h-40 overflow-y-auto p-1"></div>
+                    <p class="text-[10px] text-gray-400 mt-1 text-center">Uploading new photos will add them to the existing gallery.</p>
                 </div>
                 <div class="pt-4 flex justify-end gap-3">
                     <button type="button" onclick="toggleModal('editEventModal')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-lg font-medium text-sm">Cancel</button>
                     <button type="submit" class="bg-brand-gold text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-amber-700 shadow-lg">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Gallery Modal -->
+    <div id="editGalleryModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center backdrop-blur-sm p-4 transition-opacity opacity-0 pointer-events-none">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform">
+            <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                <h3 class="font-bold text-gray-800">Edit Gallery Photo</h3>
+                <button onclick="toggleModal('editGalleryModal')" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+            </div>
+            <form action="backend/edit_gallery.php" method="POST" class="p-6 space-y-4">
+                <input type="hidden" name="id" id="edit_gallery_id">
+                <div>
+                     <label class="text-[10px] font-bold text-gray-500 uppercase">Folder / Event Name</label>
+                     <input type="text" name="folder_name" id="edit_gallery_folder" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:border-indigo-600 outline-none" required>
+                </div>
+                <div class="pt-4 flex justify-end gap-3">
+                    <button type="button" onclick="toggleModal('editGalleryModal')" class="px-4 py-2 text-gray-500 hover:bg-gray-100 rounded-lg font-medium text-sm">Cancel</button>
+                    <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-indigo-700 shadow-lg">Save Changes</button>
                 </div>
             </form>
         </div>
@@ -784,7 +963,7 @@ try {
                     navItem.classList.remove('text-gray-400', 'border-transparent');
                 }
                 // Update Title
-                const titles = { 'dashboard': 'Dashboard Overview', 'members': 'Manage Institutions', 'events': 'Events & News', 'files': 'File Repository' };
+                const titles = { 'dashboard': 'Dashboard Overview', 'members': 'Manage Institutions', 'events': 'Events & News', 'files': 'File Repository', 'gallery': 'Media Gallery' };
                 document.getElementById('page-title').innerText = titles[id] || 'Admin Panel';
                 
                 // Update URL without reloading (unless region change)
@@ -834,7 +1013,27 @@ try {
                 setTimeout(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); }, 10);
             } else {
                 modal.classList.add('opacity-0', 'pointer-events-none');
-                setTimeout(() => { modal.classList.add('hidden'); }, 300);
+                setTimeout(() => { 
+                    modal.classList.add('hidden'); 
+                    // Reset forms and clean up file selections when modal closes
+                    const form = modal.querySelector('form');
+                    if (form) {
+                        form.reset();
+                        // Special cleanup for custom image uploads
+                        const fileInputs = form.querySelectorAll('input[type="file"]');
+                        fileInputs.forEach(input => {
+                            if (fileStore.has(input.id)) {
+                                fileStore.delete(input.id);
+                            }
+                            // Reset preview states visually
+                            const uploadStateId = input.id.replace('_input', '_upload_state');
+                            const previewContainerId = input.id.replace('_input', '_preview_container');
+                            if (document.getElementById(uploadStateId) && document.getElementById(previewContainerId)) {
+                                renderPreviewUI(input.id, previewContainerId, uploadStateId);
+                            }
+                        });
+                    }
+                }, 300);
             }
         }
 
@@ -849,6 +1048,12 @@ try {
             document.getElementById('edit_original_table').value = data.table;
 
             toggleModal('editMemberModal');
+        }
+
+        function openEditGalleryModal(data) {
+            document.getElementById('edit_gallery_id').value = data.id;
+            document.getElementById('edit_gallery_folder').value = data.folder;
+            toggleModal('editGalleryModal');
         }
 
         function openEditEventModal(data) {
@@ -922,6 +1127,95 @@ try {
             document.getElementById(`tab-${tab}`).classList.remove('text-gray-500');
             document.getElementById(`tab-${tab}`).classList.add('text-brand-blue', 'border-b-2', 'border-brand-blue');
             document.getElementById(`grid-${tab}`).classList.remove('hidden');
+        }
+
+        const fileStore = new Map();
+
+        function previewImagesUI(input, containerId, stateId) {
+            if (!fileStore.has(input.id)) {
+                fileStore.set(input.id, new DataTransfer());
+            }
+            const dt = fileStore.get(input.id);
+            
+            // Add freshly selected files, skipping exact duplicates
+            if (input.files && input.files.length > 0) {
+                Array.from(input.files).forEach(file => {
+                    let exists = false;
+                    for (let i = 0; i < dt.files.length; i++) {
+                        if (dt.files[i].name === file.name && dt.files[i].size === file.size) {
+                            exists = true;
+                            break;
+                        }
+                    }
+                    if (!exists) {
+                        dt.items.add(file);
+                    }
+                });
+            }
+            
+            // Sync the physical input object to our maintained list
+            input.files = dt.files;
+            
+            // Render the UI
+            renderPreviewUI(input.id, containerId, stateId);
+        }
+
+        function renderPreviewUI(inputId, containerId, stateId) {
+            const input = document.getElementById(inputId);
+            const container = document.getElementById(containerId);
+            const state = document.getElementById(stateId);
+            container.innerHTML = '';
+            
+            if (!input || !input.files || input.files.length === 0) {
+                state.innerHTML = `
+                    <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                    <p class="text-xs font-semibold text-gray-700">Click to browse multiple files</p>
+                    <p class="text-[10px] text-gray-500 mt-1">Select from different folders by clicking again</p>
+                `;
+                return;
+            }
+
+            state.innerHTML = `
+                <i class="fas fa-check-circle text-2xl text-green-500 mb-1"></i>
+                <p class="text-xs font-bold text-green-700">${input.files.length} photos added</p>
+                <p class="text-[10px] text-gray-500 mt-1 hover:underline">Click here to add more photos</p>
+            `;
+
+            Array.from(input.files).forEach((file, index) => {
+                if (!file.type.startsWith('image/')) return;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const div = document.createElement('div');
+                    div.className = 'aspect-square rounded-lg overflow-hidden border border-gray-200 shadow-sm relative group bg-gray-50';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/60 hidden group-hover:flex flex-col items-center justify-center cursor-pointer transition z-10" onclick="removeFileFromSelection(event, '${inputId}', ${index}, '${containerId}', '${stateId}')">
+                            <i class="fas fa-trash-alt text-white text-lg mb-1"></i>
+                            <span class="text-[10px] text-white font-bold">Remove</span>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                }
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function removeFileFromSelection(event, inputId, indexToRemove, containerId, stateId) {
+            event.stopPropagation();
+            event.preventDefault();
+            const input = document.getElementById(inputId);
+            const dt = fileStore.get(inputId);
+            const newDt = new DataTransfer();
+            
+            for (let i = 0; i < dt.files.length; i++) {
+                if (i !== indexToRemove) {
+                    newDt.items.add(dt.files[i]);
+                }
+            }
+            
+            fileStore.set(inputId, newDt);
+            input.files = newDt.files;
+            renderPreviewUI(inputId, containerId, stateId);
         }
     </script>
 

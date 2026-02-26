@@ -139,6 +139,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $status = "success";
             $title = "Updated Successfully";
             $message = "<strong>$title_input</strong> has been updated.";
+
+            // --- ADDITION FOR GALLERY SYNC ---
+            if (!empty($image_path)) {
+                $conn->query("INSERT IGNORE INTO gallery_photos (folder_name, image_path) VALUES ('$title_input', '$image_path')");
+            }
+            if (!empty($new_additional_images)) {
+                foreach($new_additional_images as $img) {
+                    $conn->query("INSERT IGNORE INTO gallery_photos (folder_name, image_path) VALUES ('$title_input', '$img')");
+                }
+            }
+            // ---------------------------------
+            
         } else {
             $status = "error";
             $title = "Database Error";
